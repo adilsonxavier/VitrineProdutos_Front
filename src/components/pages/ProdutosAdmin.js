@@ -47,7 +47,7 @@ export default function ProdutosAdmin() {
             formData.append("produtoId", values.produtoId);
             formData.append("produtoNome", values.produtoNome);
             formData.append("produtoDescricao", values.produtoDescricao);
-            formData.append("produtoValor", values.produtoValor.replace(".",",")); // precisa ir com vírgula senão chega como int na api
+            formData.append("produtoValor", values.produtoValor.toString().replace(".",",")); // precisa ir com vírgula senão chega como int na api
 
             addOrEdit(formData, resetForm);
 
@@ -66,7 +66,7 @@ export default function ProdutosAdmin() {
     const validate = () => {
         let temp = {};
         temp.produtoNome = values.produtoNome == "" ? false : true;
-        let produtoValor = values.produtoValor.replace(",", ".");
+        let produtoValor = values.produtoValor.toString().replace(",", ".");
         temp.produtoValor = produtoValor == "" || isNaN(produtoValor) || parseFloat(produtoValor) <= 0   ? false : true;
         setErrors(temp);
         console.log(temp);
