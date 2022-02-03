@@ -5,6 +5,8 @@ import Company from "./components/pages/Company";
 import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import Login from "./components/pages/login";
+import ProdutosAdmin from "./components/pages/ProdutosAdmin";
 
 export default function App() {
     return (
@@ -19,8 +21,17 @@ export default function App() {
                     <Route exact path="/">
                         <Home />
                     </Route>
+
                     <Route  path="/company">
                         <Company />
+                    </Route>
+
+                    <Route path="/admin">
+                        <Login />
+                    </Route>
+
+                    <Route  path="/produtosAdmin">
+                        <ProdutosAdmin />
                     </Route>
               
              </Switch>
