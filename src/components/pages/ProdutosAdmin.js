@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import axios from "axios";
 import ProdutoForm from "./produtoform";
-
+import logo from "../../img/costs_logo.png";
 
 export default function ProdutosAdmin() {
   
@@ -210,6 +210,7 @@ export default function ProdutosAdmin() {
                             <td>Prod nome</td>
                             <td>Prod desc</td>
                             <td>Prod valor</td>
+                            <td>Thumb</td>
                             <td>Deletar</td>
                             <td>Editar</td>
                         </tr>
@@ -221,6 +222,8 @@ export default function ProdutosAdmin() {
                                         <td>{produto.produtoNome}</td>
                                         <td>{produto.produtoDescricao}</td>
                                         <td>{produto.produtoValor}</td>
+                                        <td>
+                                            <img src={produto.imageSrc != "" ? produto.imageSrc : logo} className="thumb" alt={produto.produtoDescricao } /> </td>
                                         <td>
                                             <button onClick={(e) => onDelete(e, parseInt(produto.produtoId))} >Deletar</button>
                                         </td>

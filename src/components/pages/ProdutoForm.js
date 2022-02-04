@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function ProdutoForm() {
 
@@ -158,7 +159,7 @@ export default function ProdutoForm() {
                         .then(resp => {
                             console.log("156")
                              alert("Produto inserido com sucesso ");
-                            history.push("/produtosAdmin");
+                            history.push(`/produtoForm/${data.produtoId}`);
                         })
                         .catch(erro => console.log(erro))
 
@@ -330,7 +331,12 @@ export default function ProdutoForm() {
                             </section>
                             <br />
                             <button type="submit" >Submit</button>
-                        </div>
+                            {id != 0 &&
+                                <Link to={`/Fotos/${id}`} >fotos </Link>
+                            }
+                            &nbsp;
+                            <Link to="/produtosAdmin" >Voltar</Link>
+                         </div>
                     </form>
                 </div >
                 {/*<!----- produto form fim ------->*/}

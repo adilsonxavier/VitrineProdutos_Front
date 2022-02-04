@@ -1,10 +1,10 @@
 ﻿import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import logo from "../../img/costs_logo.png";
 
 export default function ProdutosAdmin2() {
-  
+
 
 
     const [produtoList, setProdutoList] = React.useState([]);
@@ -33,7 +33,7 @@ export default function ProdutosAdmin2() {
     function refreshProdutoList() {
         console.log("l 28");
         produtoAPI().fetchAll()
-            .then(resp => { setProdutoList(resp.data); console.log("resp:"+resp.data) })
+            .then(resp => { setProdutoList(resp.data); console.log("resp:" + resp.data) })
             .catch(err => console.log("o erro lina 26 foi : " + err));
 
         console.log("linha 33" + produtoList.length);
@@ -57,7 +57,7 @@ export default function ProdutosAdmin2() {
     return (
         <div>
             <h1> Produtos admin 0253</h1>
-            <div style={{display:"flex"}}>
+            <div style={{ display: "flex" }}>
                 <div>
                     <Link to={"/ProdutoForm/0"} > Novo Produto </Link>
                 </div>
@@ -70,6 +70,7 @@ export default function ProdutosAdmin2() {
                             <td>Prod nome</td>
                             <td>Prod desc</td>
                             <td>Prod valor</td>
+                            <td>Thumbr</td>
                             <td>Deletar</td>
                             <td>Editar</td>
                         </tr>
@@ -82,11 +83,16 @@ export default function ProdutosAdmin2() {
                                         <td>{produto.produtoDescricao}</td>
                                         <td>{produto.produtoValor}</td>
                                         <td>
+
+                                            <img src={produto.imageSrc != "http://localhost:55366/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
+                                        </td>
+                                         
+                                        <td>
                                             <button onClick={(e) => onDelete(e, parseInt(produto.produtoId))} >Deletar</button>
                                         </td>
                                         <td>
-                                           
-                                            <Link to={`/produtoForm/${produto.produtoId}`} >editar </Link>
+
+                                            <Link style={{ border: "solid 1px red" }} to={`/produtoForm/${produto.produtoId}`} >editar</Link>
                                         </td>
                                     </tr>
                                 ))

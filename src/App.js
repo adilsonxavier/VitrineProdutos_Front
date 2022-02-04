@@ -6,6 +6,7 @@ import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Login from "./components/pages/login";
+import Fotos from "./components/pages/fotos";
 import ProdutosAdmin2 from "./components/pages/ProdutosAdmin2";
 import ProdutoForm from "./components/pages/ProdutoForm";
 
@@ -33,6 +34,10 @@ export default function App() {
 
                     <Route path="/produtoForm/:id">
                         <ProdutoForm />
+                    </Route>
+
+                    <Route path="/fotos/:id">
+                        <Fotos />
                     </Route>
 
                     <Route  path="/produtosAdmin">
