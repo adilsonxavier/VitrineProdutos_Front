@@ -6,7 +6,8 @@ import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Login from "./components/pages/login";
-import ProdutosAdmin from "./components/pages/ProdutosAdmin";
+import ProdutosAdmin2 from "./components/pages/ProdutosAdmin2";
+import ProdutoForm from "./components/pages/ProdutoForm";
 
 export default function App() {
     return (
@@ -30,8 +31,12 @@ export default function App() {
                         <Login />
                     </Route>
 
+                    <Route path="/produtoForm/:id">
+                        <ProdutoForm />
+                    </Route>
+
                     <Route  path="/produtosAdmin">
-                        <ProdutosAdmin />
+                        <ProdutosAdmin2 />
                     </Route>
               
              </Switch>

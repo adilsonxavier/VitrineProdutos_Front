@@ -19,7 +19,7 @@ export default function Navbar(props) {
                 </li>
 
                 <li>
-                    <Link to="/admin/produtosAdmin" >Admin</Link>
+                    <Link to="/produtosAdmin" >Admin</Link>
                 </li>
 
 
