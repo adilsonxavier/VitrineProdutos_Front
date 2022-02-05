@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import logo from "../../img/costs_logo.png";
 import Pagination from "../layout/Pagination";
+import Loading from "../layout/Loading";
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
@@ -17,6 +18,7 @@ export default function ProdutosAdmin2() {
 
     const [busca, setBusca] = React.useState("");
     const [values, setValues] = React.useState("");
+    const [showLoading, setShowLoading] = React.useState(true);
 
     const [produtoList, setProdutoList] = React.useState([]);
 
@@ -47,6 +49,7 @@ export default function ProdutosAdmin2() {
         produtoAPI().fetchByPagination()
             .then(resp => {
                 setProdutoList(resp.data); setTotalItens(resp.data[0] != undefined ? resp.data[0].qtdTotalItens : 0);
+                setShowLoading(false);
                 console.log("47 total itens " + totalItens); console.log("resp:" + JSON.stringify(resp.data[0])) })
             .catch(err => console.log("o erro lina 26 foi : " + err));
 
@@ -91,12 +94,17 @@ export default function ProdutosAdmin2() {
             <h1> Produtos admin 0253</h1>
             <input type="text" placeholder="busca" name="busca" onChange={handleInputChange} />
             <button onClick={handleBusca} >Buscar</button>
+            {
+                showLoading &&
+                (
+                  <Loading />
+                )
+            }
 
             <div style={{ display: "flex",flexDirection:"column" }}>
                 <div>
                     <Link to={"/ProdutoForm/0"} > Novo Produto </Link>
                 </div>
-
 
                 <table border="1px">
                     <tbody>
@@ -138,10 +146,11 @@ export default function ProdutosAdmin2() {
                 <br />
                 {totalItens > 0 &&
                     <Pagination
-                        pageSize={PAGESIZE}
-                        totalItens={totalItens}
-                        currentPage2={currentPage2}
-                        setCurrentPage2={setCurrentPage2}
+                    pageSize={PAGESIZE}
+                    totalItens={totalItens}
+                    currentPage2={currentPage2}
+                    setCurrentPage2={setCurrentPage2}
+                    setShowLoading={setShowLoading}
 
                     />
 
