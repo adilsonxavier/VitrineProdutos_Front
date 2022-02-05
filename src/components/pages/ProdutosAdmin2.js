@@ -2,28 +2,40 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import logo from "../../img/costs_logo.png";
+import Pagination from "../layout/Pagination";
 
 export default function ProdutosAdmin2() {
+    //////////// Paginação ///////////
+    const PAGESIZE = 10;
+    // const TOTALITENS= 120;
+    //const SKIP = 24;
+    //const [skip, setSkip] = React.useState(0);
+    const [currentPage2, setCurrentPage2] = React.useState(1);
+    const [totalItens, setTotalItens] = React.useState(0);
 
+     //////////// Paginação fin ///////////
 
+    const [busca, setBusca] = React.useState("");
+    const [values, setValues] = React.useState("");
 
     const [produtoList, setProdutoList] = React.useState([]);
 
-    const [recordForEdit, setRecordForEdit] = React.useState(null);
+   // const [recordForEdit, setRecordForEdit] = React.useState(null);
 
     React.useEffect(() => {
 
         refreshProdutoList();
-        if (recordForEdit != null) {
-            setValues(recordForEdit)
-        }
-    }, [recordForEdit]
+        //if (recordForEdit != null) {
+        //    setValues(recordForEdit)
+        //}
+    }, [currentPage2,busca]
     );
 
     const produtoAPI = (url = "http://localhost:55366/api/produtos") => {
         return {
             fetchAll: () => axios.get(url),
-            fetchByName: (wordkey) => axios.get(url + "/GetProdutoByName/" + wordkey),
+            //fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
+            fetchByPagination: () => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`),
             create: (newRecord) => axios.post(url, newRecord),
             update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
             delete: (id) => axios.delete(url + "/" + id)
@@ -32,8 +44,10 @@ export default function ProdutosAdmin2() {
 
     function refreshProdutoList() {
         console.log("l 28");
-        produtoAPI().fetchAll()
-            .then(resp => { setProdutoList(resp.data); console.log("resp:" + resp.data) })
+        produtoAPI().fetchByPagination()
+            .then(resp => {
+                setProdutoList(resp.data); setTotalItens(resp.data[0] != undefined ? resp.data[0].qtdTotalItens : 0);
+                console.log("47 total itens " + totalItens); console.log("resp:" + JSON.stringify(resp.data[0])) })
             .catch(err => console.log("o erro lina 26 foi : " + err));
 
         console.log("linha 33" + produtoList.length);
@@ -54,10 +68,31 @@ export default function ProdutosAdmin2() {
 
     }
 
+    const handleBusca = () => {
+        setBusca(values.busca != undefined ? values.busca : "");
+        console.log("78 busca " + busca);
+    }
+
+    const handleInputChange = e => {
+        // const [name, value] = e.target;
+        setValues(
+            {
+                ...values,
+                [e.target.name]: e.target.value
+            }
+
+        );
+       
+
+    }
+
     return (
         <div>
             <h1> Produtos admin 0253</h1>
-            <div style={{ display: "flex" }}>
+            <input type="text" placeholder="busca" name="busca" onChange={handleInputChange} />
+            <button onClick={handleBusca} >Buscar</button>
+
+            <div style={{ display: "flex",flexDirection:"column" }}>
                 <div>
                     <Link to={"/ProdutoForm/0"} > Novo Produto </Link>
                 </div>
@@ -100,6 +135,17 @@ export default function ProdutosAdmin2() {
                         }
                     </tbody>
                 </table>
+                <br />
+                {totalItens > 0 &&
+                    <Pagination
+                        pageSize={PAGESIZE}
+                        totalItens={totalItens}
+                        currentPage2={currentPage2}
+                        setCurrentPage2={setCurrentPage2}
+
+                    />
+
+                }
             </div>
         </div>
 
