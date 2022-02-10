@@ -10,6 +10,8 @@ import Fotos from "./components/pages/fotos";
 import ProdutosAdmin2 from "./components/pages/ProdutosAdmin2";
 import ProdutoForm from "./components/pages/ProdutoForm";
 
+import ContextProvider from "./components/Contexts/Context1";
+
 export default function App() {
     return (
         <Router >
@@ -19,7 +21,7 @@ export default function App() {
 
             <Container >
             <Switch>
-
+                    <ContextProvider>
                     <Route exact path="/">
                         <Home />
                     </Route>
@@ -43,7 +45,7 @@ export default function App() {
                     <Route  path="/produtosAdmin">
                         <ProdutosAdmin2 />
                     </Route>
-              
+                 </ContextProvider>
              </Switch>
 
             </Container>

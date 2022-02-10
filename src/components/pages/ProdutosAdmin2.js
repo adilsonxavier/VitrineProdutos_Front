@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../img/costs_logo.png";
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
+import { Context } from "../Contexts/Context1";
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
@@ -16,6 +17,10 @@ export default function ProdutosAdmin2() {
 
      //////////// Paginação fin ///////////
 
+    const { authorized, setAuthorized, baseUrl, token } = React.useContext(Context);
+
+  /*  const [token, setToken] = React.useState("");*/
+
     const [busca, setBusca] = React.useState("");
     const [values, setValues] = React.useState("");
     const [showLoading, setShowLoading] = React.useState(true);
@@ -26,6 +31,14 @@ export default function ProdutosAdmin2() {
 
     React.useEffect(() => {
 
+        console.log("token refresh 34 " + token);
+        //var tokenAtual = localStorage.getItem("token");
+        //console.log(" token atual useeffect 1728" + tokenAtual);
+        //if (!tokenAtual) {
+        //    history.push("/login");
+        //  }
+
+        //setToken(tokenAtual);
         refreshProdutoList();
         //if (recordForEdit != null) {
         //    setValues(recordForEdit)
@@ -37,16 +50,24 @@ export default function ProdutosAdmin2() {
         return {
             fetchAll: () => axios.get(url),
             //fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
-            fetchByPagination: () => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`),
+            fetchByPagination: (tokenAtual) => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`, {
+                headers: {
+                    "Authorization": `Bearer ${tokenAtual}`
+                }
+              }),
             create: (newRecord) => axios.post(url, newRecord),
             update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
-            delete: (id) => axios.delete(url + "/" + id)
+            delete: (id) => axios.delete(url + "/" + id, {
+                headers: {
+                    "Authorization": `Bearer ${tokenAtual}`
+                }
+            })
         }
     }
 
     function refreshProdutoList() {
-        console.log("l 28");
-        produtoAPI().fetchByPagination()
+       // console.log("l 28 alt token jpsrsde 1730 " + JSON.parse(token));
+        produtoAPI().fetchByPagination(JSON.parse(token))
             .then(resp => {
                 setProdutoList(resp.data); setTotalItens(resp.data[0] != undefined ? resp.data[0].qtdTotalItens : 0);
                 setShowLoading(false);
@@ -62,9 +83,11 @@ export default function ProdutosAdmin2() {
 
         // Como o botão está dentro de uma div que já tinha seu proprio onClick, precisa do stopPropagation senão tanto o click
         // do botão quanto da div serão acionados
+        console.log("delete 85");
+
         e.stopPropagation();
         if (confirm("tem certeza ?")) {
-            produtoAPI().delete(id)
+            produtoAPI().delete(id, JSON.parse(token))
                 .then(resp => refreshProdutoList())
                 .catch(erro => console.log(erro));
         }
