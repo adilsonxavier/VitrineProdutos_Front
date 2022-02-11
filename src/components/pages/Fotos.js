@@ -2,6 +2,8 @@
 import Foto from "./Foto";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import api from "../../api"
+
 
 
 
@@ -10,25 +12,35 @@ export default function Fotos() {
     const [fotos, setFotos] = React.useState([]);
     const [recordForEdit, setRecordForEdit] = React.useState(null);
 
+        React.useEffect(() => {
+        // console.log("AC.useeffect executado");
+        const token = localStorage.getItem("token");
+        if (token) {
+            api.defaults.headers.Authorization = token;
+        }
+    }, []);
+
 
     React.useEffect(() => {
+        console.log("fotos 1844");
         refreshFotosList();
     }, []
     );
 
-    const fotosAPI = (url = "http://localhost:55366/api/fotos") => {
-        return {
-            fetchAll: () => axios.get(url),
-            fetchAllByProduto: (id) => axios.get(url + "/GetFotosProduto/" + id),
-            create: (newRecord) => axios.post(url, newRecord),
-            update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
-            delete: (id) => axios.delete(url + "/" + id),
+    //const fotosAPI = (url = "http://localhost:55366/api/fotos") => {
+    //    return {
+    //        fetchAll: () => axios.get(url),
+    //        fetchAllByProduto: (id) => axios.get(url + "/GetFotosProduto/" + id),
+    //        create: (newRecord) => axios.post(url, newRecord),
+    //        update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
+    //        delete: (id) => axios.delete(url + "/" + id),
 
-        }
-    }
+    //    }
+    //}
 
     function refreshFotosList() {
-        fotosAPI().fetchAllByProduto(id)
+        api.get(`/fotos/GetFotosProduto/${id}`, id)
+        //fotosAPI().fetchAllByProduto(id)
             .then(resp => { setFotos(resp.data); console.log(resp.data) })
             .catch(err => console.log("o erro lina 26 foi : " + err));
 
@@ -39,7 +51,9 @@ export default function Fotos() {
 
         e.stopPropagation();
         if (confirm("tem certeza ?")) {
-            fotosAPI().delete(id)
+            //delete: (id) => axios.delete(url + "/" + id),
+            api.delete(`/fotos/${id}`)
+           // fotosAPI().delete(id)
                 .then(resp => refreshFotosList())
                 .catch(erro => console.log(erro));
         }
@@ -64,7 +78,6 @@ export default function Fotos() {
                 <div >
                     <Foto
                         produtoId={id}
-                        fotosApi={fotosAPI}
                         refreshFotosList={refreshFotosList}
                     />
                 </div>

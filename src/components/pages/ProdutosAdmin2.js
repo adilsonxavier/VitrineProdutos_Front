@@ -5,6 +5,7 @@ import logo from "../../img/costs_logo.png";
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
 import { Context } from "../Contexts/Context1";
+import api from "../../api"
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
@@ -17,7 +18,7 @@ export default function ProdutosAdmin2() {
 
      //////////// Paginação fin ///////////
 
-    const { authorized, setAuthorized, baseUrl, token } = React.useContext(Context);
+    const { authorized, setAuthorized, baseUrl } = React.useContext(Context);
 
   /*  const [token, setToken] = React.useState("");*/
 
@@ -31,14 +32,25 @@ export default function ProdutosAdmin2() {
 
     React.useEffect(() => {
 
-        console.log("token refresh 34 " + token);
+      //  console.log("token refresh 34 " + token);
         //var tokenAtual = localStorage.getItem("token");
         //console.log(" token atual useeffect 1728" + tokenAtual);
         //if (!tokenAtual) {
         //    history.push("/login");
         //  }
+        //const token = localStorage.getItem("token");
+        //if (token) {
+        //    api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+        //   // setAuthenticated(true);
+        //}
+        //setToken(tokenAtual);.
 
-        //setToken(tokenAtual);
+             // console.log("AC.useeffect executado");
+            const token = localStorage.getItem("token");
+            if (token) {
+                api.defaults.headers.Authorization = token;
+            }
+  
         refreshProdutoList();
         //if (recordForEdit != null) {
         //    setValues(recordForEdit)
@@ -66,8 +78,9 @@ export default function ProdutosAdmin2() {
     }
 
     function refreshProdutoList() {
-       // console.log("l 28 alt token jpsrsde 1730 " + JSON.parse(token));
-        produtoAPI().fetchByPagination(JSON.parse(token))
+        console.log("api def prodadm 1202 " + api.defaults.headers.Authorization);
+        api.get(`/produtos/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`)
+        //produtoAPI().fetchByPagination(JSON.parse(token))
             .then(resp => {
                 setProdutoList(resp.data); setTotalItens(resp.data[0] != undefined ? resp.data[0].qtdTotalItens : 0);
                 setShowLoading(false);
@@ -83,11 +96,12 @@ export default function ProdutosAdmin2() {
 
         // Como o botão está dentro de uma div que já tinha seu proprio onClick, precisa do stopPropagation senão tanto o click
         // do botão quanto da div serão acionados
-        console.log("delete 85");
+        console.log("delete 85 1251");
 
         e.stopPropagation();
         if (confirm("tem certeza ?")) {
-            produtoAPI().delete(id, JSON.parse(token))
+            api.delete(`/produtos/${id}`)
+          //  produtoAPI().delete(id, JSON.parse(token))
                 .then(resp => refreshProdutoList())
                 .catch(erro => console.log(erro));
         }

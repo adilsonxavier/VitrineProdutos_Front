@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import api from "../../api"
 
 export default function ProdutoForm() {
 
@@ -38,7 +39,7 @@ export default function ProdutoForm() {
         return {
             fetchAll: () => axios.get(url),
             fetchByName: (wordkey) => axios.get(url + "/GetProdutoByName/" + wordkey),
-            fetchById: (id) => axios.get(url + "/" + id),
+            //fetchById: (id) => axios.get(url + "/" + id),
             create: (newRecord) => axios.post(url, newRecord),
             update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
             delete: (id) => axios.delete(url + "/" + id)
@@ -46,7 +47,9 @@ export default function ProdutoForm() {
     }
 
     const refeshProduto = (id) => {
-        produtoAPI().fetchById(id)
+        console.log("api getbyid 1310 " + api.defaults.headers.Authorization);
+        api.get(`/produtos/${id}`)
+        //produtoAPI().fetchById(id)
             .then(resp => {
                 setValues(resp.data);
                 console.log("dados: " + resp.data);
@@ -143,9 +146,11 @@ export default function ProdutoForm() {
 
     const addOrEdit = (formData, onSuccess) => {
        
-
+       // create: (newRecord) => axios.post(url, newRecord),
         if (formData.get("produtoId") == "0") {
-            produtoAPI().create(formData)
+
+            api.post("/produtos/", formData)
+           // produtoAPI().create(formData)
                 .then(response => { return response.data
                    // resp.json()
                   //  console.log("150" + response.json());
@@ -155,9 +160,10 @@ export default function ProdutoForm() {
                 }
                 )
                 .then(data => {
-                    categoriasAPI().update(data.produtoId, categorias)
+                    api.put(`/categorias/PutCategoriasProduto/${data.produtoId}`, categorias)
+                    //categoriasAPI().update(data.produtoId, categorias)
                         .then(resp => {
-                            console.log("156")
+                            console.log("1002 1404")
                              alert("Produto inserido com sucesso ");
                             history.push(`/produtoForm/${data.produtoId}`);
                         })
@@ -167,15 +173,18 @@ export default function ProdutoForm() {
                 .catch((err) => { "erro el 19 " + console.log(err) });
         }
         else {
-
-            produtoAPI().update(formData.get("produtoId"), formData)
+            //update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
+            api.put(`/produtos/${formData.get("produtoId")}`, formData)
+           // produtoAPI().update(formData.get("produtoId"), formData)
                 .then(resp => {
                     //console.log("erro foi " + resp); onSuccess(); /*refreshProdutoList()*/;
                     //alert("Produto " + formData.get("produtoId") + " atualizado");
                     //history.push("/produtosAdmin");
-                    categoriasAPI().update(id, categorias)
+                    //update: (id, updatedRecord) => axios.put(url + "/PutCategoriasProduto/" + id, updatedRecord),
+                    api.put(`/categorias/PutCategoriasProduto/${id}`,categorias)
+                   // categoriasAPI().update(id, categorias)
                         .then(resp => {
-                            console.log("163")
+                            console.log("1002 1400")
                                alert("Produto " + formData.get("produtoId") + " atualizado");
                                  history.push("/produtosAdmin");
                         })
@@ -232,7 +241,8 @@ export default function ProdutoForm() {
 
     function refreshCategoriasList(id) {
         console.log("refredh cat id " + id)
-        categoriasAPI().fetchAllByProduto(id)
+        api.get(`/categorias/GetCategoriasProduto/${id}`)
+      //  categoriasAPI().fetchAllByProduto(id)
             .then(resp => setCategorias(resp.data))
             .catch(err => console.log("o erro lina 26 foi : " + err));
        // console.log("213 : "+ JSON.stringify(categorias));

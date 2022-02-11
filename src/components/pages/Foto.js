@@ -1,9 +1,10 @@
 ﻿import React from "react";
 import logo from "../../img/costs_logo.png";
+import api from "../../api"
 
 export default function Foto(props) {
 
-    const { recordForEdit, produtoId, fotosApi, refreshFotosList } = props;
+    const { recordForEdit, produtoId,  refreshFotosList } = props;
 
     const defaultImageSrc = logo;
 
@@ -64,10 +65,12 @@ export default function Foto(props) {
         // forem false ( sem erro)
     }
 
-    const addOrEdit = (formData, onSuccess, fotosAPI) => {
-        console.log("fotos 68 " + formData.get("produtoId"));
+    const addOrEdit = (formData, onSuccess) => {
+        console.log("fotos 1517 " + formData.get("produtoId"));
         ////if (formData.get("produtoId") == "0") {
-        fotosAPI().create(formData)
+        // create: (newRecord) => axios.post(url, newRecord),
+        api.post("/fotos", formData)
+       // fotosAPI().create(formData)
             .then(resp => {
                 console.log(resp); onSuccess(); refreshFotosList();
             })
@@ -111,7 +114,7 @@ export default function Foto(props) {
             formData.append("imageName", values.imageName);
             formData.append("imageFile", values.imageFile);
 
-            addOrEdit(formData, resetForm, fotosApi);
+            addOrEdit(formData, resetForm);
 
 
             console.log("ok 97")

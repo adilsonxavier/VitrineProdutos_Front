@@ -1,14 +1,16 @@
 ﻿import React from "react";
 import axios from "axios";
+import api from "../../api";
 
 import { useHistory, Link } from 'react-router-dom';
 
 import { Context } from "../Contexts/Context1";
 
 
+
 export default function Login() {
     const history = useHistory();
-    const { authorized, setAuthorized, baseUrl,token,setToken } = React.useContext(Context)
+    const { authorized, setAuthorized, baseUrl,token,setToken} = React.useContext(Context)
     //const handleLogar = e => {
     //   e.preventDefault();
     //    console.log("btn2");
@@ -17,7 +19,7 @@ export default function Login() {
 
     const userAPI = (url = `${baseUrl}/user`) => {
         return {
-            authenticate: (user) => axios.post(`${url}/login`, user)
+            authenticate: (user) => axios.post(`${url}/user/login`, user)
             //fetchAll: () => axios.get(url),
             ////fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
             //fetchByPagination: () => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`),
@@ -29,16 +31,23 @@ export default function Login() {
 
 
    async function handleAutenticate () {
-        console.log("baseirl;" + baseUrl);
+        console.log("auth 34 1112");
         const user = { name: "maysa", password: "123456" };
-       const { data } = await userAPI().authenticate(user);
+      // const { data } = await userAPI().authenticate(user);
+      // api.defaults.baseURL = 'https://api.example.com';
+       const { data } = await api.post("/user/login", user)
+
+      // const { data: { token } } = await api.post("/authenticate");
 
        const meutoken = JSON.stringify(data.token);
        setToken(meutoken);
        setAuthorized(true);
-       localStorage.setItem("token", meutoken);
+     //  localStorage.setItem("token", meutoken);
+       
+       api.defaults.headers.Authorization = `Bearer ${data.token}`
+       localStorage.setItem("token", `Bearer ${data.token}`);
        /* console.log("handle authedafd0502s 36" + data.token + "json"+ JSON.stringify(data.token));*/
-       console.log("haut 42 " + meutoken)
+       console.log("api def 12300 " + api.defaults.headers.Authorization )
        history.push("/ProdutosAdmin");
 
     }
