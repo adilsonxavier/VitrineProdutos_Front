@@ -10,7 +10,7 @@ import { Context } from "../Contexts/Context1";
 
 export default function Login() {
     const history = useHistory();
-    const { authorized, setAuthorized, baseUrl,token,setToken} = React.useContext(Context)
+    const { authorized, setAuthorized, baseUrl,token,setToken,logged,setLogged} = React.useContext(Context)
     //const handleLogar = e => {
     //   e.preventDefault();
     //    console.log("btn2");
@@ -31,7 +31,7 @@ export default function Login() {
 
 
    async function handleAutenticate () {
-        console.log("auth 34 1112");
+        console.log("auth 0938");
         const user = { name: "maysa", password: "123456" };
       // const { data } = await userAPI().authenticate(user);
       // api.defaults.baseURL = 'https://api.example.com';
@@ -41,14 +41,18 @@ export default function Login() {
 
        const meutoken = JSON.stringify(data.token);
        setToken(meutoken);
-       setAuthorized(true);
+       setAuthorized(true); 
      //  localStorage.setItem("token", meutoken);
        
        api.defaults.headers.Authorization = `Bearer ${data.token}`
        localStorage.setItem("token", `Bearer ${data.token}`);
        /* console.log("handle authedafd0502s 36" + data.token + "json"+ JSON.stringify(data.token));*/
-       console.log("api def 12300 " + api.defaults.headers.Authorization )
-       history.push("/ProdutosAdmin");
+       console.log("api def 12300 " + api.defaults.headers.Authorization)
+       setLogged(true);
+       setAuthorized(true);
+       console.log("logged tela login " + logged);
+       console.log("authorizedd tela login " + authorized)
+      history.push("/ProdutosAdmin");
 
     }
     return (

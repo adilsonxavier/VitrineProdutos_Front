@@ -1,9 +1,19 @@
 ﻿import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from 'react-router-dom';
 import styles from "./Navbar.module.css";
 import logo from "../../img/costs_logo.png";
+import { Context } from "../Contexts/Context1";
 
 export default function Navbar(props) {
+    const { logged, setLogged } = React.useContext(Context);
+    const history = useHistory();
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setLogged(false);
+        history.push("/login");
+    }
+
     return (
         <nav className={styles.navbar}>
             {/*            <Container>*/}
@@ -19,7 +29,11 @@ export default function Navbar(props) {
                 </li>
 
                 <li>
-                    <Link to="/admin" >Admin</Link>
+                    {logged
+                        ? <a onClick={logout } >Logout</a>
+                        : <Link to="/login" >Login</Link>
+                    }
+
                 </li>
 
 

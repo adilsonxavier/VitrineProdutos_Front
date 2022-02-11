@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 import Home from "./components/pages/Home";
 import Company from "./components/pages/Company";
 import Container from "./components/layout/Container";
@@ -16,40 +16,41 @@ export default function App() {
     return (
         <Router >
 
+            <ContextProvider>
+                <Header />
 
-            <Header />
+                <Container >
+                    <Switch>
 
-            <Container >
-            <Switch>
-                    <ContextProvider>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
 
-                    <Route  path="/company">
-                        <Company />
-                    </Route>
+                        <Route path="/company">
+                            <Company />
+                        </Route>
 
-                    <Route path="/admin">
-                        <Login />
-                    </Route>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
 
-                    <Route path="/produtoForm/:id">
-                        <ProdutoForm />
-                    </Route>
+                        <Route path="/produtoForm/:id">
+                            <ProdutoForm />
+                        </Route>
 
-                    <Route path="/fotos/:id">
-                        <Fotos />
-                    </Route>
+                        <Route path="/fotos/:id">
+                            <Fotos />
+                        </Route>
 
-                    <Route  path="/produtosAdmin">
-                        <ProdutosAdmin2 />
-                    </Route>
-                 </ContextProvider>
-             </Switch>
+                        <Route path="/produtosAdmin">
+                            <ProdutosAdmin2 />
+                        </Route>
 
-            </Container>
-          <Footer/>
+                    </Switch>
+
+                </Container>
+                <Footer />
+            </ContextProvider>
         </Router>
 
     );

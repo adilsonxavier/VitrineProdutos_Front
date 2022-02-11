@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from 'react-router-dom';
 import logo from "../../img/costs_logo.png";
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
@@ -18,7 +18,9 @@ export default function ProdutosAdmin2() {
 
      //////////// Paginação fin ///////////
 
-    const { authorized, setAuthorized, baseUrl } = React.useContext(Context);
+    const history = useHistory();
+
+    const { authorized, setAuthorized, baseUrl, checkExpiredToken,logged} = React.useContext(Context);
 
   /*  const [token, setToken] = React.useState("");*/
 
@@ -32,9 +34,16 @@ export default function ProdutosAdmin2() {
 
     React.useEffect(() => {
 
+        console.log("logged " + logged);
       //  console.log("token refresh 34 " + token);
         //var tokenAtual = localStorage.getItem("token");
         //console.log(" token atual useeffect 1728" + tokenAtual);
+        if (checkExpiredToken()) {
+            alert("token expirado! \n Faça novo login.");
+            history.push("/login");
+        }
+
+
         //if (!tokenAtual) {
         //    history.push("/login");
         //  }
@@ -47,10 +56,10 @@ export default function ProdutosAdmin2() {
 
              // console.log("AC.useeffect executado");
             const token = localStorage.getItem("token");
-            if (token) {
-                api.defaults.headers.Authorization = token;
-            }
-  
+        if (token) {
+            api.defaults.headers.Authorization = token;
+        }
+
         refreshProdutoList();
         //if (recordForEdit != null) {
         //    setValues(recordForEdit)
