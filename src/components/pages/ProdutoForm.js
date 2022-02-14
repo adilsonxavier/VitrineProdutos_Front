@@ -208,11 +208,11 @@ export default function ProdutoForm() {
         // Como o botão está dentro de uma div que já tinha seu proprio onClick, precisa do stopPropagation senão tanto o click
         // do botão quanto da div serão acionados
         e.stopPropagation();
-        if (confirm("tem certeza ?")) {
-            produtoAPI().delete(id)
-                .then(resp => refreshProdutoList())
-                .catch(erro => console.log(erro));
-        }
+        //if (confirm("tem certeza ?")) {
+        //    produtoAPI().delete(id)
+        //        .then(resp => refreshProdutoList())
+        //        .catch(erro => console.log(erro));
+        //}
 
     }
 

@@ -173,7 +173,7 @@ export default function ProdutosAdmin2() {
                                         <td>{produto.produtoValor}</td>
                                         <td>
 
-                                            <img src={produto.imageSrc != "http://localhost:55366/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
+                                            <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
                                         </td>
                                          
                                         <td>
