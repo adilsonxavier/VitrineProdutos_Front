@@ -8,39 +8,56 @@ export default function Navbar(props) {
     const { logged, setLogged } = React.useContext(Context);
     const history = useHistory();
 
+    const [checked, setChecked] = React.useState(false);
+
     const logout = () => {
         localStorage.removeItem("token");
         setLogged(false);
         history.push("/login");
     }
 
+    const checkBoxChanged = () => {
+        setChecked(!checked);
+    }
+
+
     return (
         <nav className={styles.navbar}>
             {/*            <Container>*/}
-            <Link to="/" ><img src={logo} alt="meu logo" /></Link>
 
-            <ul className={styles.list}>
-                <li>
-                    <Link to="/" >Home</Link>  {/* o Link é renderizado como uma tag <a>*/}
+            <input type="checkbox" onChange={(e) => checkBoxChanged(e) } id="check"/>
+
+            <Link to="/" >Meu logo</Link>
+
+            <ul className={`${styles.list} ${ checked==true ? styles.newstyle : styles.oldstyle}`} >
+                <li >
+                    <Link onClick={checkBoxChanged} to="/" >Home</Link>  {/* o Link é renderizado como uma tag <a>*/}
+                   
                 </li>
 
                 <li>
-                    <Link to="/company" >Empresa</Link>
+                    <Link onClick={checkBoxChanged } to="/company" >Empresa</Link>
                 </li>
 
                 <li>
                     {logged
                         ? <a onClick={logout } >Logout</a>
-                        : <Link to="/login" >Login</Link>
+                        : <Link onClick={checkBoxChanged} to="/login" >Login</Link>
                     }
 
                 </li>
 
 
-            </ul>
+                </ul>
+
+            <label htmlFor="check" className={styles.checkbtn}>
+                <i class="fas fa-bars"></i>
+            </label>
 
             {/*            </Container>*/}
         </nav>
+
+
 
     );
 
