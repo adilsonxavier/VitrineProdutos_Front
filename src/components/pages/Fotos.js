@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import Foto from "./Foto";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { Link } from 'react-router-dom';
 import api from "../../api"
 
 
@@ -70,6 +70,8 @@ export default function Fotos() {
             <div className="col-md-12">
                 <div className="jumbotron junbotron-fluid py-4">
                     <div className="container list">
+                        bbbb
+                        <Link  to={`/produtoForm/${id}`} >Voltar</Link> 
                         <h1 className="display-4">Fotos do Produto {id}</h1>
                     </div>
                 </div>

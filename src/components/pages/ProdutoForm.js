@@ -9,7 +9,7 @@ export default function ProdutoForm() {
 
     const history = useHistory();
 
-    const { id } = useParams()
+    const { id } = useParams();
     //#region ProdutoForm 
     ///////comp ProdutoForm inicio//////////******************************
 
@@ -74,23 +74,6 @@ export default function ProdutoForm() {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        //console.log("1030");
-        //if (validate()) {
-        //    console.log("ok 40")
-        //}
-        //else {
-        //    console.log("n ok 42");
-        //}
-
-
-        //////////////////
-        //var formData = new FormData;
-        //var arr = ['this', 'is', 'an', 'array'];
-
-        //for (var i = 0; i < arr.length; i++) {
-        //    formData.append('arr[]', arr[i]);
-        //}
-        //////////////////
 
         if (validate()) {
             const formData = new FormData();
@@ -98,13 +81,6 @@ export default function ProdutoForm() {
             formData.append("produtoNome", values.produtoNome);
             formData.append("produtoDescricao", values.produtoDescricao);
             formData.append("produtoValor", values.produtoValor.toString().replace(".", ",")); // precisa ir com vírgula senão chega como int na api
-
-            //console.log("cats values" + values.categorias);
-            //for (var i = 0; i < categorias.length; i++) {
-            //    formData.append('categorias[]',JSON.stringify(categorias[i]));
-            //    console.log("102 categoria " + i + " = " + JSON.stringify(categorias[i]));
-            //}
-           // console.log(" 104 categorias[] ", JSON.stringify(values.categorias));
 
             addOrEdit(formData, resetForm);
 
@@ -201,26 +177,6 @@ export default function ProdutoForm() {
     /////////////
 
 
-
-    const onDelete = (e, id) => {
-        //e.preventDefault()
-
-        // Como o botão está dentro de uma div que já tinha seu proprio onClick, precisa do stopPropagation senão tanto o click
-        // do botão quanto da div serão acionados
-        e.stopPropagation();
-        //if (confirm("tem certeza ?")) {
-        //    produtoAPI().delete(id)
-        //        .then(resp => refreshProdutoList())
-        //        .catch(erro => console.log(erro));
-        //}
-
-    }
-
-    const showRecordDetails = (data) => {
-        setRecordForEdit(data);
-        // console.log("clicado");
-
-    }
    ///////comp ProdutoForm final//////////****************************************
     //#endregion
 

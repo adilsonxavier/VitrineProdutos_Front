@@ -5,7 +5,7 @@ import logo from "../../img/costs_logo.png";
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
 import { Context } from "../Contexts/Context1";
-import api from "../../api"
+import api from "../../api";
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
@@ -16,7 +16,7 @@ export default function ProdutosAdmin2() {
     const [currentPage2, setCurrentPage2] = React.useState(1);
     const [totalItens, setTotalItens] = React.useState(0);
 
-     //////////// Paginação fin ///////////
+     //////////// Paginação fim ///////////
 
     const history = useHistory();
 
@@ -67,24 +67,24 @@ export default function ProdutosAdmin2() {
     }, [currentPage2,busca]
     );
 
-    const produtoAPI = (url = "http://localhost:55366/api/produtos") => {
-        return {
-            fetchAll: () => axios.get(url),
-            //fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
-            fetchByPagination: (tokenAtual) => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`, {
-                headers: {
-                    "Authorization": `Bearer ${tokenAtual}`
-                }
-              }),
-            create: (newRecord) => axios.post(url, newRecord),
-            update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
-            delete: (id) => axios.delete(url + "/" + id, {
-                headers: {
-                    "Authorization": `Bearer ${tokenAtual}`
-                }
-            })
-        }
-    }
+    //const produtoAPI = (url = "http://localhost:55366/api/produtos") => {
+    //    return {
+    //        fetchAll: () => axios.get(url),
+    //        //fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
+    //        fetchByPagination: (tokenAtual) => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`, {
+    //            headers: {
+    //                "Authorization": `Bearer ${tokenAtual}`
+    //            }
+    //          }),
+    //        create: (newRecord) => axios.post(url, newRecord),
+    //        update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
+    //        delete: (id) => axios.delete(url + "/" + id, {
+    //            headers: {
+    //                "Authorization": `Bearer ${tokenAtual}`
+    //            }
+    //        })
+    //    }
+    //}
 
     function refreshProdutoList() {
         console.log("api def prodadm 1202 " + api.defaults.headers.Authorization);
@@ -129,10 +129,7 @@ export default function ProdutosAdmin2() {
                 ...values,
                 [e.target.name]: e.target.value
             }
-
         );
-       
-
     }
 
     return (
