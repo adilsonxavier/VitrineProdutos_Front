@@ -11,7 +11,7 @@ export default function Footer() {
                 <li><FaInstagram /> </li>
                 <li><FaInstagram /> </li>
             </ul>
-            <p className={ styles.copyright }><span>Costs</span> &nbsp; &copy;2021</p>
+            <p className={ styles.copyright }><span>Adilson Xavier de Souza</span> &nbsp; &copy;2022</p>
         </footer>
 
 

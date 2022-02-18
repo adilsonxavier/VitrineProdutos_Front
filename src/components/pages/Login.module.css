@@ -1,4 +1,57 @@
-﻿.invalidfield {
+﻿.container{
+    width:100%;
+}
+.containerlogin {
+    width: 25rem;
+    height: 20rem;
+    margin: 2rem auto;
+    background-color: #dadada;
+    border: solid 1px #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction:column;
+    border-radius:1rem;
+}
+
+.containerlogin h1 {
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+}
+.divbutton {
+    width: 100% !important;
+    margin-top: 1rem !important;
+    text-align: center;
+}
+
+.buttonlogin {
+    padding: .5rem;
+    background: #fb3;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+.containerlogin  div {
+        width: 75%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        height:20%;
+    }
+
+
+
+.inputtext {
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: 15rem;
+}
+
+.invalidfield {
     border: solid 1px red;
     color: red;
 }
