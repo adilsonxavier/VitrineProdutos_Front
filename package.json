@@ -25,17 +25,17 @@
     "react-router-dom": "^5.3.0",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
-    "webpack": "^5.65.0"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "devDependencies": {
-    "css-loader": "^6.5.1",
+    "css-loader": "^5.2.7",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.4.5",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^3.11.3"
+    "style-loader": "^2.0.0"
   },
   "browserslist": {
     "production": [

@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import axios from "axios";
 import api from "../../api";
+import styles from "./Home2.module.css";
 
 import { useHistory, Link } from 'react-router-dom';
 
@@ -10,29 +11,13 @@ import { Context } from "../Contexts/Context1";
 
 export default function Login() {
     const history = useHistory();
-    const { authorized, setAuthorized, baseUrl,token,setToken,logged,setLogged} = React.useContext(Context)
-    //const handleLogar = e => {
-    //   e.preventDefault();
-    //    console.log("btn2");
-    //    history.push("/admin/produtosAdmin");
-    //}
+    const { authorized, setAuthorized, baseUrl, token, setToken, logged, setLogged } = React.useContext(Context);
+    const [errors, setErrors] = React.useState({});
 
-    const userAPI = (url = `${baseUrl}/user`) => {
-        return {
-            authenticate: (user) => axios.post(`${url}/user/login`, user)
-            //fetchAll: () => axios.get(url),
-            ////fetchByPaginationNome: (wordkey) => axios.get(url + "/GetProdutosPaginacao/" + wordkey),
-            //fetchByPagination: () => axios.get(`${url}/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`),
-            //create: (newRecord) => axios.post(url, newRecord),
-            //update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
-            //delete: (id) => axios.delete(url + "/" + id)
-        }
-    }
-
-
-   async function handleAutenticate () {
-        console.log("auth 0938");
-        const user = { name: "maysa", password: "123456" };
+   async function handleAutenticate (formData) {
+        console.log("auth 0755");
+       // const user = { name: "maysa", password: "123456" };
+       const user = formData; 
       // const { data } = await userAPI().authenticate(user);
       // api.defaults.baseURL = 'https://api.example.com';
        const { data } = await api.post("/user/login", user)
@@ -55,12 +40,108 @@ export default function Login() {
       history.push("/ProdutosAdmin");
 
     }
+
+    const initialFieldValues = {
+        name: "",
+        password: ""
+    }
+    const [values, setValues] = React.useState(initialFieldValues);
+
+    const handleFormSubmit = e => {
+        e.preventDefault();
+
+        if (validate()) {
+            handleAutenticate();
+        }
+        else {
+            console.log("tem erro 57")
+        }
+    }
+    const handleInputChange = e => {
+        setValues(
+            {
+                ...values,
+                [e.target.name]: e.target.value
+            }
+
+        );
+    }
+
+    const validate = () => {
+        let temp = {};
+        temp.name = values.name == "" ? false : true;
+        temp.password = values.password == "" ? false : true;
+        setErrors(temp);
+        console.log(temp);
+        return Object.values(temp).every(x => x == true);
+
+
+        //O Object.values(temp) retorna um array com os valores dos elementos do objeto tempo ( só os valores sem os nomes das pro-
+        // priedades ) no caso [bool, bool]
+
+        // O Array.every(função) checa se todos os valores do array passam pela função dentro do parâmetro e retorna true apenas se
+        // todos os valores passarem pelo teste
+        // No caso .every(x => x == false); retorna true (todos os campos ok) apenas se o valor de todos os elementos de temp
+        // forem false ( sem erro)
+    }
+
+    async function handleAutenticate(formData) {
+        // rever tratamento de erro
+
+        console.log("aut 1027000");
+        const resposta = {};
+        try {
+            const { data } = await api.post("/user/login", values);
+            const meutoken = JSON.stringify(data.token);
+            const mensagem = JSON.stringify(data.mensagem);
+
+            if (mensagem == '"ok"') {
+                setToken(meutoken);
+                setAuthorized(true);
+                api.defaults.headers.Authorization = `Bearer ${data.token}`
+                localStorage.setItem("token", `Bearer ${data.token}`);
+                setLogged(true);
+                setAuthorized(true);
+                history.push("/ProdutosAdmin");
+            }
+            else {
+                alert(mensagem);
+            }
+
+        }
+        catch (e) {
+            alert(e);
+        }
+       
+       
+
+    }
+
+    const applyErrorClass = (field) => {
+        return (field in errors && errors[field] == false) ? " invalid-field" : ""
+    };
     return (
         <div>
-            <h1>Tela de Login buc443454545</h1>
-            
-            <button onClick={handleAutenticate}>Logar</button>
+            <h1>Tela de Login</h1>
 
+            <section>
+                <form onSubmit={handleFormSubmit}>
+                    <label>Usuário</label>
+                    <input type="text" name="name"
+                        placeholder="usuário"
+                        onChange={handleInputChange}
+                    />
+
+                    <label>Senha</label>
+                    <input type="password" name="password"
+                        placeholder="Senha"
+                        onChange={handleInputChange}
+                    />
+
+                    <button type="submit" >Logar</button>
+                </form>
+
+            </section>
         </div>
 
         );
