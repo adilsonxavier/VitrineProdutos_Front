@@ -49,7 +49,7 @@ export default function Navbar(props) {
                 <li>
                     {logged
                         ? <a onClick={logout } >Logout</a>
-                        : <Link onClick={checkBoxChanged} to="/login" >Login</Link>
+                        : <Link onClick={checkBoxChanged} to="/login2" >Login2</Link>
                     }
 
                 </li>
