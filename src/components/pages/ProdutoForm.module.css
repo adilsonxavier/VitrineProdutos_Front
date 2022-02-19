@@ -1,6 +1,7 @@
 ﻿.contpagina {
     width: 100%;
     font-size: 1em;
+    margin-left:.5rem;
 }
 
 .contpagina > h1{
@@ -82,7 +83,14 @@
     margin-left:5px;
 }
 
-/*{
+
+@media (max-width:858px) {
+    .contcadastro {
+        display: block;
+    }
+
+}
+    /*{
     width: 200px;
 }
 
@@ -91,7 +99,7 @@
         max-height: 200px;
     }*/
 
-/*.item {
+    /*.item {
     background-color: white;
     margin: 10px;
     padding: 10px;
@@ -100,7 +108,7 @@
     flex: none;*/ /* sem esta linha os itens diminuem por que o flex tenta fazer todos caberem no container e diminui o item 
                             até onde der , ( o componente pai de .item que é o .containter é display:flex)
                            com esta linha eles ficam na largura original de 280px   */
-/*box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
+    /*box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
 }
 
     .item .image img {
