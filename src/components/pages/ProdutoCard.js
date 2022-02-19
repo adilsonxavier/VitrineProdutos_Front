@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 
 export default function ProdutoCard(props) {
     return (
-        <article >
+        <article className={styles.item } >
             <Link to={`/ProdutoDetail/${props.produto.produtoId}`} > 
+
+                <div className={styles.image}>
+                    <img src={props.produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? props.produto.imageSrc : logo} alt={props.produto.imageSrc} />
+                </div>
                 <p>{props.produto.produtoNome}</p>
-                <img src={props.produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? props.produto.imageSrc : logo} alt={props.produto.imageSrc} />
             </Link>
         </article>
         

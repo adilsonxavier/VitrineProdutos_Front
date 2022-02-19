@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import styles from "./ProdutoForm.module.css";
 import { Link } from "react-router-dom";
 import api from "../../api"
 
@@ -17,7 +18,8 @@ export default function ProdutoForm() {
         produtoId: "0",
         produtoNome: "",
         produtoDescricao: "",
-        produtoValor: "0"
+        produtoValor: "0",
+        produtoValorAntigo: "0"
      }
 
     const [values, setValues] = React.useState(initialFieldValues);
@@ -81,6 +83,7 @@ export default function ProdutoForm() {
             formData.append("produtoNome", values.produtoNome);
             formData.append("produtoDescricao", values.produtoDescricao);
             formData.append("produtoValor", values.produtoValor.toString().replace(".", ",")); // precisa ir com vírgula senão chega como int na api
+            formData.append("produtoValorAntigo", values.produtoValorAntigo.toString().replace(".", ","));
 
             addOrEdit(formData, resetForm);
 
@@ -228,81 +231,105 @@ export default function ProdutoForm() {
 
     return (
   
-        <div >
-            <h1>{ id != "0" ? "editando produto " + id : "novo produto" }</h1>
-            <div>
+        <div className={styles.contpagina} >
+            <h1>{ id != "0" ? "Editando produto " + id : "Novo produto" }</h1>
+            <div >
                 {/*<!----- produto form inicio ------->*/}
                 <div >
-                    <h1>Produto form</h1>
                     <form onSubmit={handleFormSubmit}>
-                        <div >
+                        <div className={styles.contcadastro }>
 
-                            <input type="text" name="produtoNome"
-                                value={values.produtoNome}
-                                onChange={handleInputChange}
-                                placeholder="produto nome"
-                                className={applyErrorClass("produtoNome")}
-                            />
+                            <div className={styles.mainitens}>
+
+                                <div className={styles.item} >
+                                    <label>Nome do produto</label>
+                                    <input type="text" name="produtoNome"
+                                        value={values.produtoNome}
+                                        onChange={handleInputChange}
+                                        placeholder="produto nome"
+                                        className={`${applyErrorClass("produtoNome")} ${styles.inputtext}`}
+                                    />
+                                </div>
 
 
-                            <input type="text" name="produtoDescricao"
-                                value={values.produtoDescricao}
-                                onChange={handleInputChange}
-                                placeholder="descricao"
+                                <div className={styles.item} >
+                                    <label>Descrição</label>
+                                    <textarea type="text" name="produtoDescricao"
+                                        value={values.produtoDescricao}
+                                        onChange={handleInputChange}
+                                        placeholder="descricao"
+                                        className={`${applyErrorClass("produtoNome")} ${styles.inputtextarea}`}
+                                    />
+                                </div>
 
-                            />
+                                <div className={styles.item}>
+                                    <label>Valor</label>
+                                    <input type="text" name="produtoValor"
+                                        value={values.produtoValor}
+                                        onChange={handleInputChange}
+                                        placeholder="valor"
+                                        className={applyErrorClass("produtoValor")}
+                                    />
+                                </div>
+                            <div className={styles.item}>
+                                    <label>Valor Antigo</label>
+                                    <input type="text" name="produtoValorAntigo"
+                                        value={values.produtoValorAntigo}
+                                        onChange={handleInputChange}
+                                        placeholder="valor"
+                                        className={applyErrorClass("produtoValorAntigo")}
+                                    />
+                                </div>
+                            </div>
 
-                            <input type="text" name="produtoValor"
-                                value={values.produtoValor}
-                                onChange={handleInputChange}
-                                placeholder="valor"
-                                className={applyErrorClass("produtoValor")}
-                            />
-                         
-
-                            <section>
-                                <h1>categorias</h1>
-                                <div >
+                            <section className={styles.sectioncategorias }>
+                                    <h1>categorias</h1>
+                                    <div >
                                     {
                                         categorias.length > 0 &&
                                         /*<form onSubmit={handleFormSubmit}>*/
                                         (
 
-                                            <ul>
-                                                {
-                                                    (
-                                                        categorias.map(
-                                                            (categoria, index) => (
+                                            <ul className={ styles.categoriaslist }>
+                                                    {
+                                                        (
+                                                            categorias.map(
+                                                                (categoria, index) => (
 
-                                                                <div className="left-section" key={categoria.categoriaId}>
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        id={categoria.categoriaId}
-                                                                        name={categoria.categoriaNome}
-                                                                        value={categoria.categoriaNome}
-                                                                        checked={categoria.checked}
-                                                                        onChange={(e) => handleOnChangeCategorias(e, index)}
-                                                                    />
-                                                                    <label htmlFor={categoria.categoriaNome}>{categoria.categoriaNome} -indice: {index}</label>
-                                                                </div>
-                                                            )
-                                                        ))
-                                                }
-                                            </ul>
-                                        )
+                                                                    <li key={categoria.categoriaId}>
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            id={categoria.categoriaId}
+                                                                            name={categoria.categoriaNome}
+                                                                            value={categoria.categoriaNome}
+                                                                            checked={categoria.checked}
+                                                                            onChange={(e) => handleOnChangeCategorias(e, index)}
+                                                                        />
+                                                                        <label htmlFor={categoria.categoriaNome}> {categoria.categoriaNome}</label>
+                                                                    </li>
+                                                                )
+                                                            ))
+                                                    }
+                                                </ul>
+                                            )
 
-                                    }
-                                </div>
+                                        }
+                                    </div>
 
-                            </section>
-                            <br />
-                            <button type="submit" >Submit</button>
+                                </section>
+
+                            </div>
+
+                        <div className={styles.divsubmit}>
+                            <button type="submit" >{id != "0" ? "Editar" : "Cadastrar"}</button>
+                        </div>
+                        <div className={styles.divlinks}>
                             {id != 0 &&
                                 <Link to={`/Fotos/${id}`} >fotos </Link>
                             }
                             &nbsp;
                             <Link to="/produtosAdmin" >Voltar</Link>
-                         </div>
+                        </div>
                     </form>
                 </div >
                 {/*<!----- produto form fim ------->*/}

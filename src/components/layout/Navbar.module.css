@@ -21,6 +21,7 @@
         .list li a {
             text-decoration: none;
             color: #fff;
+            cursor:pointer;
         }
 
         .list li a:hover{

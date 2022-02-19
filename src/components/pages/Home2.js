@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from 'react-router-dom';
 import api from "../../api"
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
@@ -20,6 +20,8 @@ export default function Home2() {
     const [values, setValues] = React.useState("");
     const [showLoading, setShowLoading] = React.useState(true);
 
+
+    const history = useHistory();
 
     const [produtoList, setProdutoList] = React.useState([]);
 
@@ -58,21 +60,22 @@ export default function Home2() {
 
 
     return (
-        <div>
-            <h1> Produtos admin 0253</h1>
-            <input type="text" placeholder="busca" name="busca" onChange={handleInputChange} />
-            <button onClick={handleBusca} >Buscar</button>
-            {
-                showLoading &&
-                (
-                    <Loading />
-                )
-            }
+        <div className={ styles.contprodutos }>
+            <h1>Nossos Produtos </h1>
+            <section className={styles.busca}>
+                <input type="text" placeholder="busca" name="busca" className={ styles.inputtext} onChange={handleInputChange} />
+                <button onClick={handleBusca} >Buscar</button>
+                {
+                    showLoading &&
+                    (
+                        <Loading />
+                    )
+                }
+            </section>
+
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>
-                    <Link to={"/ProdutoForm/0"} > Novo Produto </Link>
-                </div>
+
 
 
                 <section className={styles.containerProdutos}>

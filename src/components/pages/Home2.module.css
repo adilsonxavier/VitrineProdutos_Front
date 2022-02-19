@@ -1,9 +1,42 @@
-﻿body {
+﻿h1 {
+    font-size: 1.5em;
+    color: #555;
+    margin-top: 1rem;
 }
 
+.busca {
+    width: 35rem;
+    display: flex;
+    justify-content:left;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+
+.busca button {
+    padding: .5rem;
+    background: #fb3;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    color: #555;
+    margin-left:2rem;
+}
+
+.inputtext {
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: 20rem;
+}
+
+.contprodutos {
+    margin: auto;
+}
 .containerProdutos
 {
-    background:green;
+     margin-top: 1rem;
+   /* background:green;*/
     display:flex;
     justify-content:space-between;
     max-width:1000px;
