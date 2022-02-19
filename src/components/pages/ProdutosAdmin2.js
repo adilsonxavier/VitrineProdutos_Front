@@ -6,6 +6,8 @@ import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
 import { Context } from "../Contexts/Context1";
 import api from "../../api";
+import styles from "./ProdutosAdmin2.module.css";
+
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
@@ -133,50 +135,61 @@ export default function ProdutosAdmin2() {
     }
 
     return (
-        <div>
+        <div className={styles.contprodutos}>
             <h1> Produtos admin 0253</h1>
-            <input type="text" placeholder="busca" name="busca" onChange={handleInputChange} />
-            <button onClick={handleBusca} >Buscar</button>
-            {
-                showLoading &&
-                (
-                  <Loading />
-                )
-            }
+
+            <section className={styles.busca}>
+                <div className={styles.esquerda}>
+                    <input type="text" placeholder="busca" name="busca" className={styles.inputtext} onChange={handleInputChange} />
+                    <button onClick={handleBusca} >Buscar</button>
+                    {
+                        showLoading &&
+                        (
+                            <Loading />
+                        )
+                    }
+                </div>
+                <div className={styles.direita}>
+                    <div>
+                        <Link to={"/ProdutoForm/0"} ><button> Novo Produto </button></Link>
+                    </div>
+                </div>
+
+            </section>
 
             <div style={{ display: "flex",flexDirection:"column" }}>
-                <div>
-                    <Link to={"/ProdutoForm/0"} > Novo Produto </Link>
-                </div>
+
 
                 <table border="1px">
                     <tbody>
                         <tr>
-                            <td>Prod id</td>
-                            <td>Prod nome</td>
-                            <td>Prod desc</td>
-                            <td>Prod valor</td>
-                            <td>Thumbr</td>
-                            <td>Deletar</td>
-                            <td>Editar</td>
+                            <td className={styles.priority1} > Prod id</td>
+                            <td className={styles.priority1} > Prod nome</td>
+                            <td className={styles.priority3} > Prod desc</td>
+                            <td className={styles.priority1} > Prod valor</td>
+                            <td className={styles.priority3} > Prod valor antigo</td>
+                            <td className={styles.priority2} > Thumbr</td>
+                            <td className={styles.priority1} > Deletar</td>
+                            <td className={styles.priority1} > Editar</td>
                         </tr>
                         {
                             (produtoList.length > 0 &&
                                 produtoList.map(produto => (
                                     <tr key={produto.produtoId}>
-                                        <td>{produto.produtoId}</td>
-                                        <td>{produto.produtoNome}</td>
-                                        <td>{produto.produtoDescricao}</td>
-                                        <td>{produto.produtoValor}</td>
-                                        <td>
+                                        <td className={styles.priority1} >  {produto.produtoId}</td>
+                                        <td className={styles.priority1} >  {produto.produtoNome}</td>
+                                        <td className={styles.priority3} >  {produto.produtoDescricao}</td>
+                                        <td className={styles.priority1} >  {produto.produtoValor}</td>
+                                        <td className={styles.priority3} >  {produto.produtoValorAntigo}</td>
+                                        <td className={styles.priority2} >
 
                                             <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
                                         </td>
                                          
-                                        <td>
+                                        <td className={styles.priority1} >
                                             <button onClick={(e) => onDelete(e, parseInt(produto.produtoId))} >Deletar</button>
                                         </td>
-                                        <td>
+                                        <td className={styles.priority1} >
 
                                             <Link style={{ border: "solid 1px red" }} to={`/produtoForm/${produto.produtoId}`} >editar</Link>
                                         </td>
