@@ -1,0 +1,146 @@
+﻿.contpagina {
+    width: 100%;
+    font-size: 1em;
+}
+
+.contpagina > h1{
+    text-align:center;
+}
+
+.contcadastro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: .4rem;
+}
+
+    .contcadastro .mainitens {
+        grid-column: 1;
+    }
+
+    .contcadastro .mainitens > * {
+        display: block;
+    }
+
+        .contcadastro .mainitens div.item {
+            margin-bottom: .8rem;
+        }
+        .contcadastro .mainitens div.item > * {
+            display: block;
+        }
+
+
+
+.item input, .item textarea {
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: 15rem;
+  
+}
+    .item input.inputtext{
+        width: 25rem;
+    }
+
+    .item textarea.inputtextarea {
+        width: 25rem;
+        height: 4rem;
+    }
+        .contcadastro section {
+            display: block;
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+.divsubmit{
+    width:100%;
+    text-align:center;
+    display:block;
+}
+    .divsubmit button, .contpagina  a {
+        padding: .5rem;
+        background: #fb3;
+        border-radius: 7px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+.divlinks {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    font-size:.8em;
+}
+
+.sectioncategorias h1 {
+    margin-top:0px;
+}
+
+.categoriaslist li {
+    list-style:none;
+}
+.categoriaslist li label{
+    margin-left:5px;
+}
+
+/*{
+    width: 200px;
+}
+
+    img {
+        max-width: 200px;
+        max-height: 200px;
+    }*/
+
+/*.item {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    width: 17.3rem;
+    border-radius: 16px;
+    flex: none;*/ /* sem esta linha os itens diminuem por que o flex tenta fazer todos caberem no container e diminui o item 
+                            até onde der , ( o componente pai de .item que é o .containter é display:flex)
+                           com esta linha eles ficam na largura original de 280px   */
+/*box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
+}
+
+    .item .image img {
+        width: 16rem;
+        height: 16rem;
+        object-fit: cover;
+    }
+
+    .item .info {
+        height: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .item .info span {
+            display: block;
+            text-align: center;
+            color: #1e1e1e;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .item .info .name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #00a8fb;
+        }
+
+        .item .info .oldPrice {
+            font-size: 0.8rem;
+            text-decoration: line-through;
+            flex-grow: 1;
+            color: #e81a5d;
+        }
+
+        .item .info .price {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #ff7e3b;
+      }*/

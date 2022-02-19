@@ -27,7 +27,7 @@ export default function Navbar(props) {
         <nav className={styles.navbar}>
             {/*            <Container>*/}
 
-            <input type="checkbox" onChange={(e) => checkBoxChanged(e) } id="check"/>
+            <input type="checkbox" onChange={(e) => checkBoxChanged(e)} className={ styles.check} id="check"/>
 
             <Link to="/" >Meu logo</Link>
 
