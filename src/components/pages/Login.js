@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import axios from "axios";
 import api from "../../api";
-import styles from "./Home2.module.css";
+import styles from "./Login.module.css";
 
 import { useHistory, Link } from 'react-router-dom';
 
@@ -121,24 +121,31 @@ export default function Login() {
         return (field in errors && errors[field] == false) ? " invalid-field" : ""
     };
     return (
-        <div>
-            <h1>Tela de Login</h1>
+        <div className={styles.container}>
+ 
 
-            <section>
+            <section className={styles.containerlogin}>
                 <form onSubmit={handleFormSubmit}>
-                    <label>Usuário</label>
-                    <input type="text" name="name"
-                        placeholder="usuário"
-                        onChange={handleInputChange}
-                    />
-
-                    <label>Senha</label>
-                    <input type="password" name="password"
-                        placeholder="Senha"
-                        onChange={handleInputChange}
-                    />
-
-                    <button type="submit" >Logar</button>
+                    <h1>Tela de Login</h1>
+                    <div >
+                        <label>Usuário</label>
+                        <input type="text" name="name"
+                            placeholder="usuário"
+                            onChange={handleInputChange}
+                            className={styles.inputtext}
+                        />
+                    </div>
+                    <div>
+                        <label>Senha</label>
+                        <input type="password" name="password"
+                            placeholder="Senha"
+                            onChange={handleInputChange}
+                            className={styles.inputtext}
+                        />
+                    </div>
+                    <div className={styles.divbutton}>
+                        <button type="submit" className={styles.buttonlogin} >Logar</button>
+                    </div>
                 </form>
 
             </section>
