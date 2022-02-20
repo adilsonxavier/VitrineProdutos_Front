@@ -7,6 +7,7 @@ import Loading from "../layout/Loading";
 import { Context } from "../Contexts/Context1";
 import api from "../../api";
 import styles from "./ProdutosAdmin2.module.css";
+import { FaTrash,FaPencilAlt} from "react-icons/fa"
 
 
 export default function ProdutosAdmin2() {
@@ -163,35 +164,35 @@ export default function ProdutosAdmin2() {
             <table className={styles.tableprod } >
                     <tbody>
                         <tr>
-                            <th className={styles.priority2} > Prod id</th>
-                            <th className={styles.priority1} > Prod nome</th>
-                            <th className={styles.priority3} > Prod desc</th>
-                            <th className={styles.priority1} > Prod valor</th>
-                            <th className={styles.priority3} > Prod valor antigo</th>
-                            <th className={styles.priority2} > Thumbr</th>
-                            <th className={styles.priority1} > Deletar</th>
-                            <th className={styles.priority1} > Editar</th>
+                        <th className={styles.priority2} style={{ minWidth: "5%" }}> Id</th>
+                        <th className={styles.priority1} style={{ minWidth: "15%" }}> Nome</th>
+                        <th className={styles.priority3} style={{ minWidth: "35%" }}> Descrição</th>
+                        <th className={styles.priority1} style={{ minWidth: "15%" }}> Valor</th>
+                        <th className={styles.priority3} style={{ minWidth: "15%" }}> De</th>
+                        <th className={styles.priority2} style={{ minWidth: "15%" }}> Thumbr</th>
+                        <th className={styles.priority1} style={{ minWidth: "10%" }}> Deletar</th>
+                        <th className={styles.priority1} style={{ minWidth: "10%" }}> Editar</th>
                         </tr>
                         {
                             (produtoList.length > 0 &&
                                 produtoList.map(produto => (
                                     <tr key={produto.produtoId}>
                                         <td className={styles.priority2} >  {produto.produtoId}</td>
-                                        <td className={styles.priority1} >  {produto.produtoNome}</td>
+                                        <td className={styles.priority1} >   {produto.produtoNome}</td>
                                         <td className={styles.priority3} >  {produto.produtoDescricao}</td>
-                                        <td className={styles.priority1} >  {produto.produtoValor}</td>
-                                        <td className={styles.priority3} >  {produto.produtoValorAntigo}</td>
+                                        <td className={styles.priority1} > R$  {Number(produto.produtoValor).toFixed(2).replace(".",",")}</td>
+                                        <td className={styles.priority3}  > R$  {Number(produto.produtoValor).toFixed(2).replace(".", ",")}</td>
                                         <td className={styles.priority2} >
 
                                             <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
                                         </td>
                                          
-                                        <td className={styles.priority1} >
-                                            <button onClick={(e) => onDelete(e, parseInt(produto.produtoId))} >Deletar</button>
+                                        <td className={`${styles.priority1} ${styles.centered}`}>
+                                            <button onClick={(e) => onDelete(e, parseInt(produto.produtoId))} className={ styles.icons} ><FaTrash/></button>
                                         </td>
-                                        <td className={styles.priority1} >
+                                        <td className={`${styles.priority1} ${styles.centered}`}>
 
-                                            <Link style={{ border: "solid 1px red" }} to={`/produtoForm/${produto.produtoId}`} >editar</Link>
+                                            <Link className={styles.icons}  to={`/produtoForm/${produto.produtoId}`} ><FaPencilAlt/></Link>
                                         </td>
                                     </tr>
                                 ))

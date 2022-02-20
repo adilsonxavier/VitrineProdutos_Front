@@ -87,11 +87,22 @@ h1 {
         background-color: #04AA6D;
         color: white;
     }
-/*********************/
 
+    .tableprod td.centered {
+        text-align:center;
+    }
 
-/**** Table columns priority ***/
-.priority1{
+    .tableprod .icons {
+        border:none;
+        font-size:1.5em;
+    }
+
+    .tableprod button.icons {
+       color:red;
+    }
+        /*********************/
+        /**** Table columns priority ***/
+        .priority1{
    
 }
 
