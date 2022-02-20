@@ -17,11 +17,13 @@ h1 {
     /*  width: 35rem;
     display: flex;
     justify-content:left;*/
-    height: 2.5rem;
+   /* height: 2.5rem;*/
     margin-top: 1rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+   /* display: grid;
+    grid-template-columns: 1fr 1fr;*/
+   display:flex;
+   flex-wrap:wrap;
 }
 
     .busca .esquerda {

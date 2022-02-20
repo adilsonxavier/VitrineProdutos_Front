@@ -8,7 +8,7 @@ import styles from "./Home2.module.css";
 
 export default function Home2() {
     //////////// Paginação ///////////
-    const PAGESIZE = 10;
+    const PAGESIZE = 6;
     // const TOTALITENS= 120;
     //const SKIP = 24;
     //const [skip, setSkip] = React.useState(0);

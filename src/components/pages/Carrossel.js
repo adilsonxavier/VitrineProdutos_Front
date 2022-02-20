@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import logo from "../../img/costs_logo.png";
 import styles from  "./Carrossel.module.css";
-import chevronright from "../../static/images/chevronright.png";
+import chevronright from "../../img/chevronright.png";
 import api from "../../api"
 
 
@@ -51,14 +51,15 @@ export default function Carrossel(props) {
                                     <div className={styles.info}>
                                         <span className={styles.name}>{foto.description}</span>
                                     </div>
-                                </div>)
+                                </div>) 
                         })}
 
 
                     </div>
                     <div className={styles.buttons} >
-                        <button onClick={handleLeftClick}> <img src={chevronright} alt="scroll left" /> </button>
-                        <button onClick={handleRightClick} > <img src={chevronright} alt="scroll right" /> </button>
+                        <button onClick={handleLeftClick}> <img src={`${window.location.origin}/src/img/chevronright.png`}  alt="scroll left" /> </button>
+                        <button onClick={handleRightClick} > <img src={`${window.location.origin}/src/img/chevronright.png`}  alt="scroll right" /> </button>
+                      
                     </div>
                 </div>
             </div>

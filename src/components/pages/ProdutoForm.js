@@ -321,7 +321,7 @@ export default function ProdutoForm() {
                             </div>
 
                         <div className={styles.divsubmit}>
-                            <button type="submit" >{id != "0" ? "Editar" : "Cadastrar"}</button>
+                            <button type="submit" >{id != "0" ? "Atualizar" : "Cadastrar"}</button>
                         </div>
                         <div className={styles.divlinks}>
                             {id != 0 &&

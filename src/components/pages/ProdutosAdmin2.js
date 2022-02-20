@@ -12,7 +12,7 @@ import { FaTrash,FaPencilAlt} from "react-icons/fa"
 
 export default function ProdutosAdmin2() {
     //////////// Paginação ///////////
-    const PAGESIZE = 10;
+    const PAGESIZE = 6;
     // const TOTALITENS= 120;
     //const SKIP = 24;
     //const [skip, setSkip] = React.useState(0);
@@ -181,7 +181,7 @@ export default function ProdutosAdmin2() {
                                         <td className={styles.priority1} >   {produto.produtoNome}</td>
                                         <td className={styles.priority3} >  {produto.produtoDescricao}</td>
                                         <td className={styles.priority1} > R$  {Number(produto.produtoValor).toFixed(2).replace(".",",")}</td>
-                                        <td className={styles.priority3}  > R$  {Number(produto.produtoValor).toFixed(2).replace(".", ",")}</td>
+                                        <td className={styles.priority3}  > R$  {Number(produto.produtoValorAntigo).toFixed(2).replace(".", ",")}</td>
                                         <td className={styles.priority2} >
 
                                             <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />

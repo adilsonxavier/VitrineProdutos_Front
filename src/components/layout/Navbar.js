@@ -29,7 +29,7 @@ export default function Navbar(props) {
 
             <input type="checkbox" onChange={(e) => checkBoxChanged(e)} className={ styles.check} id="check"/>
 
-            <Link to="/" >Meu logo</Link>
+            <Link to="/" ><img src={logo } /></Link>
 
             <ul className={`${styles.list} ${ checked==true ? styles.newstyle : styles.oldstyle}`} >
                 <li >

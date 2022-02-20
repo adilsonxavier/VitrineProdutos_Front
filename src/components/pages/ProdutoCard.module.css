@@ -22,6 +22,10 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
 }
 
+    .item a {
+        text-decoration:none;
+        color:#444;
+    }
     .item .image img {
         width: 16rem;
         height: 16rem;
@@ -43,21 +47,21 @@
             border-radius: 10px;
         }
 
-        .item .info .name {
+        .item .name {
             font-size: 1.2rem;
             font-weight: bold;
             margin: 10px 0;
             color: #00a8fb;
         }
 
-        .item .info .oldPrice {
+        .item  .oldPrice {
             font-size: 0.8rem;
             text-decoration: line-through;
             flex-grow: 1;
             color: #e81a5d;
         }
 
-        .item .info .price {
+        .item  .price {
             margin-top: 10px;
             font-size: 1.2rem;
             font-weight: bold;
