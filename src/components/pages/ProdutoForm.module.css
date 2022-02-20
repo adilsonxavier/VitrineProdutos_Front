@@ -9,13 +9,16 @@
 }
 
 .contcadastro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*    display: grid;
+    grid-template-columns: 1fr 1fr;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin-top: .4rem;
 }
 
     .contcadastro .mainitens {
-        grid-column: 1;
+       /* grid-column: 1;*/
     }
 
     .contcadastro .mainitens > * {
