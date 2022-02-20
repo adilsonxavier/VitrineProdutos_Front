@@ -46,6 +46,17 @@
     margin: auto;
 }
 
+.tableprod {
+    max-width: 100rem;
+    display: block;
+    margin-top: .4rem;
+}
+
+.paginationcontainer {
+    max-width: 100rem;
+    display: block;
+    margin-top: .4rem;
+}
 /**** Table columns priority ***/
 .priority1{
    

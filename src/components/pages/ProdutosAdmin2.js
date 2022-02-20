@@ -157,10 +157,10 @@ export default function ProdutosAdmin2() {
 
             </section>
 
-            <div style={{ display: "flex",flexDirection:"column" }}>
 
 
-                <table border="1px">
+
+            <table className={styles.tableprod } border="1px">
                     <tbody>
                         <tr>
                             <td className={styles.priority1} > Prod id</td>
@@ -199,7 +199,8 @@ export default function ProdutosAdmin2() {
                         }
                     </tbody>
                 </table>
-                <br />
+
+            <div className={ styles.paginationcontainer } >
                 {totalItens > 0 &&
                     <Pagination
                     pageSize={PAGESIZE}
@@ -209,7 +210,6 @@ export default function ProdutosAdmin2() {
                     setShowLoading={setShowLoading}
 
                     />
-
                 }
             </div>
         </div>
