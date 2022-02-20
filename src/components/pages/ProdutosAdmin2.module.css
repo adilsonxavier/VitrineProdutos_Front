@@ -1,4 +1,13 @@
-﻿h1 {
+﻿.contpagina {
+    width: 100rem;
+    font-size: 1em;
+    margin-left: .5rem;
+    display:flex;
+    flex-direction:column;
+}
+
+
+h1 {
     font-size: 1.5em;
     color: #555;
     margin-top: 1rem;
@@ -15,14 +24,14 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.esquerda {
-    display: flex;
-    justify-content: left;
-}
-.direita {
-    display: flex;
-    justify-content: right;
-}
+    .busca .esquerda {
+        display: flex;
+        justify-content: left;
+    }
+    .busca .direita {
+        display: flex;
+        justify-content: right;
+    }
 
 .busca button {
     padding: .5rem;
@@ -42,21 +51,42 @@
     width: 20rem;
 }
 
-.contprodutos {
-    margin: auto;
-}
-
+/*****  table  ********/
 .tableprod {
-    max-width: 100rem;
+    max-width: 100%;
     display: block;
     margin-top: .4rem;
+    border-collapse: collapse;
 }
 
-.paginationcontainer {
-    max-width: 100rem;
-    display: block;
-    margin-top: .4rem;
-}
+
+    .tableprod td, .tableprod th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+/*
+    .tableprod tr:nth-child(odd) td:nth-child(odd),
+    .tableprod tr:nth-child(even) td:nth-child(even) {
+        background-color: #f2f2f2;
+    }*/
+/*    .tableprod tr:nth-child(even), .tableprod tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }*/
+
+    .tableprod tr:hover {
+        background-color: #ddd;
+    }
+
+    .tableprod th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+/*********************/
+
+
 /**** Table columns priority ***/
 .priority1{
    
@@ -84,6 +114,12 @@
     .priority3 {
         display: none;
     }
+}
+
+.paginationcontainer {
+    max-width: 100rem;
+    display: block;
+    margin-top: .4rem;
 }
 
 /*.containerProdutos

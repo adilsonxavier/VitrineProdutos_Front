@@ -135,7 +135,7 @@ export default function ProdutosAdmin2() {
     }
 
     return (
-        <div className={styles.contprodutos}>
+        <div className={styles.contpagina}>
             <h1> Produtos admin 0253</h1>
 
             <section className={styles.busca}>
@@ -160,17 +160,17 @@ export default function ProdutosAdmin2() {
 
 
 
-            <table className={styles.tableprod } border="1px">
+            <table className={styles.tableprod } >
                     <tbody>
                         <tr>
-                            <td className={styles.priority1} > Prod id</td>
-                            <td className={styles.priority1} > Prod nome</td>
-                            <td className={styles.priority3} > Prod desc</td>
-                            <td className={styles.priority1} > Prod valor</td>
-                            <td className={styles.priority3} > Prod valor antigo</td>
-                            <td className={styles.priority2} > Thumbr</td>
-                            <td className={styles.priority1} > Deletar</td>
-                            <td className={styles.priority1} > Editar</td>
+                            <th className={styles.priority1} > Prod id</th>
+                            <th className={styles.priority1} > Prod nome</th>
+                            <th className={styles.priority3} > Prod desc</th>
+                            <th className={styles.priority1} > Prod valor</th>
+                            <th className={styles.priority3} > Prod valor antigo</th>
+                            <th className={styles.priority2} > Thumbr</th>
+                            <th className={styles.priority1} > Deletar</th>
+                            <th className={styles.priority1} > Editar</th>
                         </tr>
                         {
                             (produtoList.length > 0 &&
