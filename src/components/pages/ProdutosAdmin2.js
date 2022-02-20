@@ -151,7 +151,7 @@ export default function ProdutosAdmin2() {
                 </div>
                 <div className={styles.direita}>
                     <div>
-                        <Link to={"/ProdutoForm/0"} ><button> Novo Produto </button></Link>
+                        <Link to={"/ProdutoForm/0"} ><button className={styles.nowrapbtn }> Novo Produto </button></Link>
                     </div>
                 </div>
 
@@ -163,7 +163,7 @@ export default function ProdutosAdmin2() {
             <table className={styles.tableprod } >
                     <tbody>
                         <tr>
-                            <th className={styles.priority1} > Prod id</th>
+                            <th className={styles.priority2} > Prod id</th>
                             <th className={styles.priority1} > Prod nome</th>
                             <th className={styles.priority3} > Prod desc</th>
                             <th className={styles.priority1} > Prod valor</th>
@@ -176,7 +176,7 @@ export default function ProdutosAdmin2() {
                             (produtoList.length > 0 &&
                                 produtoList.map(produto => (
                                     <tr key={produto.produtoId}>
-                                        <td className={styles.priority1} >  {produto.produtoId}</td>
+                                        <td className={styles.priority2} >  {produto.produtoId}</td>
                                         <td className={styles.priority1} >  {produto.produtoNome}</td>
                                         <td className={styles.priority3} >  {produto.produtoDescricao}</td>
                                         <td className={styles.priority1} >  {produto.produtoValor}</td>

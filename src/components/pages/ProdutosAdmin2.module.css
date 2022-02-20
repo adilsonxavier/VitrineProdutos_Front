@@ -44,6 +44,9 @@ h1 {
     margin-left:2rem;
 }
 
+.busca button.nowrapbtn{
+    white-space:nowrap;
+}
 .inputtext {
     height: 2.5rem;
     border-radius: 5px;
