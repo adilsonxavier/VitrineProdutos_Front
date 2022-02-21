@@ -11,9 +11,9 @@ jobs:
       - name: Upload from dist via FTP
         uses: airvzxf/ftp-deployment-action@latest
         with: 
-          server: adilsonxdesouza.somee.com/www.adilsonxdesouza.somee.com
-          user: adilsonxavier
-          password: Maysaaxs2004*
+          server: ${{ secrets.SERVER }}
+          user:  ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
           local_dir: "./public"
           #remote_dir: costs
           delete: "true"

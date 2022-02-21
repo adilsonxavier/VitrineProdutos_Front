@@ -1,4 +1,9 @@
-﻿header{
+﻿.myheader{
    background-color:#222;
    text-align:center;
  }
+
+.myheaderadmin {
+    background-color: green;
+    text-align: center;
+}

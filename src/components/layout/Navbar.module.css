@@ -1,4 +1,4 @@
-﻿.navbar {  /* nav */
+﻿.navbar , .navbaradmin  {  /* nav */
     display: flex;
     max-width: 1200px;
     justify-content: space-between;
@@ -6,6 +6,10 @@
     margin: 0 auto;
     padding: 1em;
     align-items:center;
+}
+
+.navbaradmin { /* nav */
+    background-color: green;
 }
 
 .list { /* ul */

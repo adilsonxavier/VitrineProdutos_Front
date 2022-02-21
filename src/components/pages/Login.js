@@ -37,7 +37,7 @@ export default function Login() {
        setAuthorized(true);
        console.log("logged tela login " + logged);
        console.log("authorizedd tela login " + authorized)
-      history.push("/ProdutosAdmin");
+       history.push("/ProdutosAdmin");
 
     }
 
