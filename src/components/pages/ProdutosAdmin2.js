@@ -165,7 +165,7 @@ export default function ProdutosAdmin2() {
                     <tbody>
                         <tr>
                         <th className={styles.priority2} style={{ minWidth: "5%" }}> Id</th>
-                        <th className={styles.priority1} style={{ minWidth: "15%" }}> Nome</th>
+                        <th className={styles.priority0}  Nome</th>
                         <th className={styles.priority3} style={{ minWidth: "35%" }}> Descrição</th>
                         <th className={styles.priority1} style={{ minWidth: "15%" }}> Valor</th>
                         <th className={styles.priority3} style={{ minWidth: "15%" }}> De</th>
@@ -178,7 +178,7 @@ export default function ProdutosAdmin2() {
                                 produtoList.map(produto => (
                                     <tr key={produto.produtoId}>
                                         <td className={styles.priority2} >  {produto.produtoId}</td>
-                                        <td className={styles.priority1} >   {produto.produtoNome}</td>
+                                        <td className={styles.priority0} >   {produto.produtoNome}</td>
                                         <td className={styles.priority3} >  {produto.produtoDescricao}</td>
                                         <td className={styles.priority1} > R$  {Number(produto.produtoValor).toFixed(2).replace(".",",")}</td>
                                         <td className={styles.priority3}  > R$  {Number(produto.produtoValorAntigo).toFixed(2).replace(".", ",")}</td>
