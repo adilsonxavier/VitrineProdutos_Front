@@ -159,10 +159,10 @@ export default function Foto(props) {
         <>
             <p> Nova foto do Produto</p>
             <form onSubmit={handleFormSubmit}>
-                <div className="card">
+                <div >
                     <img src={values.imageSrc} style={ estiloFoto} onChange={showPreview} id="image-uploader" />
 
-                    <div className="card-body">
+                    <div >
                         <input type="file"
                             accept="image/*"
                             onChange={showPreview}
@@ -179,7 +179,7 @@ export default function Foto(props) {
                             className={"form-control" + applyErrorClass("description")}
                         />
                     </div>
-                    <div className="card-body">
+                    <div >
                         <button type="submit">Submit</button>
                     </div>
                 </div>
