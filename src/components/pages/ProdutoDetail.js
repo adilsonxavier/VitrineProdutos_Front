@@ -14,7 +14,7 @@ export default function ProdutoDetail(props) {
     const [categorias, setCategorias] = React.useState([]);
 
     React.useEffect(() => {
-
+        console.log("linha 17 0304");
         refeshProduto(id);
         refreshCategoriasList(id);
     }, []
@@ -40,43 +40,55 @@ export default function ProdutoDetail(props) {
     }
 
     return (
-        <section key={id }>
-            <p>Detalhe do produto {values.produtoNome}</p>
-            <section>
-                <Carrossel
-                    produtoId={id}
-                />
-            </section>
+        <section key={id} className={styles.containerprodutos} >
+            <div className={styles.esquerda}>
+                <section>
+                    <Carrossel
+                        produtoId={id}
+                    />
+                </section>
+            </div>
 
-            <section>
-                <h1>categorias</h1>
-                <div >
-                    {
-                        categorias.length > 0 &&
-                        /*<form onSubmit={handleFormSubmit}>*/
-                        (
 
-                            <ul>
-                                {
-                                    (
-                                        categorias.filter(categoria => categoria.checked == true)
-                                        .map(
-                                            (categoria, index) => (
+            <div className={styles.direita}>
+                <h1>{values.produtoNome}</h1>
+                <p>{values.produtoDescricao}</p>
+ 
+                <section>
+                    <p className={styles.pcategorias}>Categorias:</p>
+                    <div >
+                        {
+                            categorias.length > 0 &&
+                            /*<form onSubmit={handleFormSubmit}>*/
+                            (
 
-                                                <div className="left-section" key={categoria.categoriaId}>
-                                                   <label htmlFor={categoria.categoriaNome}>{categoria.categoriaNome} -indice: {index}</label>
-                                                </div>
-                                            )
+                                <ul className={styles.listacategorias}>
+                                    {
+                                        (
+                                            categorias.filter(categoria => categoria.checked == true)
+                                                .map(
+                                                    (categoria, index) => (
+
+                                                        <div className="left-section" key={categoria.categoriaId}>
+                                                            <label htmlFor={categoria.categoriaNome}>{categoria.categoriaNome}</label>
+                                                        </div>
+                                                    )
+                                                )
                                         )
-                                    )
-                                }
-                            </ul>
-                        )
+                                    }
+                                </ul>
+                            )
 
-                    }
-                </div>
+                        }
+                    </div>
 
-            </section>
+                </section>
+
+                <p className={styles.pvalantigo}> De <span className={styles.oldPrice}>R$ {Number(values.produtoValorAntigo).toFixed(2).replace(".", ",")} </span></p>
+                <p className={styles.pvalnovo}> Por <span className={styles.price}>R$  {Number(values.produtoValor).toFixed(2).replace(".", ",")}</span></p>
+            </div>
+
+
         </section>
         
         );

@@ -1,17 +1,16 @@
-﻿.container
-{
-   /*border:solid 1px #000;*/
-    max-width:1200px; 
-    display:flex;
-    justify-content:space-between; /*Os elementos filhos ocuparão todos os 1200px ficando igualmente separados por espaço entre eles*/
+﻿.container {
     margin: 0 auto; /*  0 : margin superior e inferior serão 0, auto: margin esquerda e direita serão iguais(obj fica centralizado na
                     horizontal   */
-    flex-wrap:wrap;/* quando os elementos filhos ultrapassarem 1200px vão pra baixo em uma nova linha;*/
-    /*flex-direction:column;*/
+    max-width: 1200px;
+
+    /*display: flex;
+    justify-content: space-between;*/ /*Os elementos filhos ocuparão todos os 1200px ficando igualmente separados por espaço entre eles*/
+
+    /*flex-wrap: wrap;*/ /* quando os elementos filhos ultrapassarem 1200px vão pra baixo em uma nova linha;*/
 }
 
 
-.min_height{
+/*.min_height{
     min-height:75%;
     color:green;
 }
@@ -21,4 +20,4 @@
 .column {
     flex-direction: column;
     justify-content: flex-start;
-}
+}*/

@@ -1,13 +1,52 @@
 ﻿body {
 }
 
-.containerProdutos
+.containerprodutos
 {
-    background:green;
+    /*background:green;*/
     display:flex;
-    justify-content:space-between;
-    max-width:1000px;
+   /* justify-content:space-between;*/
+    /*max-width:1000px;*/
+    width:100%;
     flex-wrap:wrap;
 
 }
+.esquerda{
 
+}
+
+.direita {
+    padding-left:1rem;
+    width:37rem;
+}
+
+    .direita .oldPrice {
+        font-size: 0.8rem;
+        text-decoration: line-through;
+        flex-grow: 1;
+        color: #e81a5d;
+    }
+
+    .direita .price {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background-color: #ff7e3b;
+    }
+
+    .direita .pvalantigo {
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+
+    .direita .pvalnovo {
+        font-weight: 600;
+    }
+    .direita .pcategorias {
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+
+    .listacategorias label{
+        font-size:.9rem;
+    }

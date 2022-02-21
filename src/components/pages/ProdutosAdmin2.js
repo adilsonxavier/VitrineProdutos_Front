@@ -165,7 +165,7 @@ export default function ProdutosAdmin2() {
                     <tbody>
                         <tr>
                         <th className={styles.priority2} style={{ minWidth: "5%" }}> Id</th>
-                        <th className={styles.priority0}  Nome</th>
+                        <th className={styles.priority0} > Nome</th>
                         <th className={styles.priority3} style={{ minWidth: "35%" }}> Descrição</th>
                         <th className={styles.priority1} style={{ minWidth: "15%" }}> Valor</th>
                         <th className={styles.priority3} style={{ minWidth: "15%" }}> De</th>

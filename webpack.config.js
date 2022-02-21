@@ -11,7 +11,6 @@ module.exports = {
         watchContentBase: true,
         historyApiFallback: true, // corrige o erro cannot get pagina do  <Switch> < Route path="/pag1" component={ Pag1 } /></Swith>
         contentBase: './',
-        index: './index.html',
         hot: true,
     },
     module: {
