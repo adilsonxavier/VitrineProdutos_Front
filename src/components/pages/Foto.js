@@ -1,12 +1,13 @@
 ﻿import React from "react";
 import logo from "../../img/costs_logo.png";
 import api from "../../api"
+import styles from "./Foto.module.css";
 
 export default function Foto(props) {
 
     const { recordForEdit, produtoId,  refreshFotosList } = props;
 
-    const defaultImageSrc = logo;
+    const defaultImageSrc = "/"+logo;
 
     const initialFieldValues = {
         fotoId: "0",
@@ -50,7 +51,8 @@ export default function Foto(props) {
     }
     const validate = () => {
         let temp = {};
-        temp.description = values.description == "" ? false : true;
+        //temp.description = values.description == "" ? false : true;
+        temp.description = true;
         temp.imageSrc = values.imageSrc == defaultImageSrc ? false : true;
         setErrors(temp);
         console.log(temp);
@@ -110,7 +112,7 @@ export default function Foto(props) {
         if (validate()) {
             const formData = new FormData();
             formData.append("produtoId", values.produtoId);
-            formData.append("description", values.description);
+            formData.append("description", "");
             formData.append("imageName", values.imageName);
             formData.append("imageFile", values.imageFile);
 
@@ -120,7 +122,8 @@ export default function Foto(props) {
             console.log("ok 97")
         }
         else {
-            console.log("n ok")
+            console.log("n ok");
+            alert("Selecione uma imagem.");
         }
     }
 
@@ -162,25 +165,29 @@ export default function Foto(props) {
                 <div >
                     <img src={values.imageSrc} style={ estiloFoto} onChange={showPreview} id="image-uploader" />
 
-                    <div >
+                    <div className={styles.btnsfoto} >
+                        <label className={styles.labelbtn } for="arquivo">Selecione o arquivo</label>
                         <input type="file"
                             accept="image/*"
                             onChange={showPreview}
                             className={"form-control-file" + applyErrorClass("imageSrc")}
+                            name="arquivo"
+                            id="arquivo"
+
 
                         />
-                        <button onClick={resetImage} >Limpar Imagem</button>
+                        <button className={styles.labelbtn} onClick={resetImage} >Limpar Imagem</button>
                     </div>
-                    <div className="card-body">
-                        <input type="text" name="description"
-                            value={values.description}
-                            onChange={handleInputChange}
-                            placeholder="descriçao"
-                            className={"form-control" + applyErrorClass("description")}
-                        />
-                    </div>
-                    <div >
-                        <button type="submit">Submit</button>
+                    {/*<div className="card-body">*/}
+                    {/*    <input type="text" name="description"*/}
+                    {/*        value={values.description}*/}
+                    {/*        onChange={handleInputChange}*/}
+                    {/*        placeholder="descriçao"*/}
+                            
+                    {/*    />*/}
+                    {/*</div>*/}
+                    <div className={styles.divbtnenviar} >
+                        <button className={styles.btnenviar} type="submit">Enviar</button>
                     </div>
                 </div>
             </form>

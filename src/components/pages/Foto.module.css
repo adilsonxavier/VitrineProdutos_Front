@@ -1,0 +1,26 @@
+﻿.btnsfoto {
+}
+
+    .btnsfoto input[type="file"] {
+        display: none;
+    }
+
+    .btnsfoto .labelbtn ,.btnenviar {
+        padding: .5rem;
+        background: #fb3;
+        border-radius: 7px;
+        font-weight: bold;
+        font-size: .8em;
+        cursor: pointer;
+        color: #555;
+        margin-right: 2rem;
+    }
+.btnenviar {
+    background: green;
+    color:#fff;
+}
+
+    .divbtnenviar{
+        margin-top:1rem;
+        text-align:center;
+    }
