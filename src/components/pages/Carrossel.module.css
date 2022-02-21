@@ -103,5 +103,7 @@
 @media (max-width:858px) {
     .container {
         max-width: 100vw;
+        margin-left: .4rem;
+        margin-right: .4rem;
     }
 }

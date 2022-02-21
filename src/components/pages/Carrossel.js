@@ -48,9 +48,9 @@ export default function Carrossel(props) {
                                     <div className={styles.image}>
                                         <img src={foto.imageSrc} alt="shoe" />
                                     </div>
-                                    <div className={styles.info}>
-                                        <span className={styles.name}>{foto.description}</span>
-                                    </div>
+                                    {/*<div className={styles.info}>*/}
+                                    {/*    <span className={styles.name}>{foto.description}</span>*/}
+                                    {/*</div>*/}
                                 </div>) 
                         })}
 
