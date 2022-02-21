@@ -41,6 +41,7 @@ export default function ProdutoDetail(props) {
 
     return (
         <section key={id} className={styles.containerprodutos} >
+
             <div className={styles.esquerda}>
                 <section>
                     <Carrossel
@@ -49,11 +50,11 @@ export default function ProdutoDetail(props) {
                 </section>
             </div>
 
-
             <div className={styles.direita}>
                 <h1>{values.produtoNome}</h1>
                 <p>{values.produtoDescricao}</p>
- 
+                <p className={styles.pvalantigo }> De <span className={styles.oldPrice}>R$ {Number(values.produtoValorAntigo).toFixed(2).replace(".", ",")} </span></p>
+                <p className={styles.pvalnovo}> Por <span className={styles.price}>R$  {Number(values.produtoValor).toFixed(2).replace(".", ",")}</span></p>
                 <section>
                     <p className={styles.pcategorias}>Categorias:</p>
                     <div >
@@ -83,12 +84,7 @@ export default function ProdutoDetail(props) {
                     </div>
 
                 </section>
-
-                <p className={styles.pvalantigo}> De <span className={styles.oldPrice}>R$ {Number(values.produtoValorAntigo).toFixed(2).replace(".", ",")} </span></p>
-                <p className={styles.pvalnovo}> Por <span className={styles.price}>R$  {Number(values.produtoValor).toFixed(2).replace(".", ",")}</span></p>
             </div>
-
-
         </section>
         
         );
