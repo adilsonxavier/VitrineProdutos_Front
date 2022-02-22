@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import logo from "../../img/costs_logo.png";
+import semfoto from "../../img/semfoto.png";
 import api from "../../api"
 import styles from "./Foto.module.css";
 
@@ -7,7 +8,7 @@ export default function Foto(props) {
 
     const { recordForEdit, produtoId,  refreshFotosList } = props;
 
-    const defaultImageSrc = "/"+logo;
+    const defaultImageSrc = "/"+semfoto;
 
     const initialFieldValues = {
         fotoId: "0",
@@ -163,7 +164,10 @@ export default function Foto(props) {
             <p> Nova foto do Produto</p>
             <form onSubmit={handleFormSubmit}>
                 <div >
-                    <img src={values.imageSrc} style={ estiloFoto} onChange={showPreview} id="image-uploader" />
+                    <div className={ styles.divfotos}>
+                        <img src={values.imageSrc} style={estiloFoto} onChange={showPreview} id="image-uploader" />
+                    </div>
+                   
 
                     <div className={styles.btnsfoto} >
                         <label className={styles.labelbtn } for="arquivo">Selecione o arquivo</label>

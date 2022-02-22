@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import axios from "axios";
 import { useHistory, Link } from 'react-router-dom';
-import logo from "../../img/costs_logo.png";
+import semfoto from "../../img/semfoto.png";
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
 import { Context } from "../Contexts/Context1";
@@ -153,7 +153,7 @@ export default function ProdutosAdmin2() {
                                         <td className={styles.priority3}  > R$  {Number(produto.produtoValorAntigo).toFixed(2).replace(".", ",")}</td>
                                         <td className={styles.priority2} >
 
-                                            <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : logo} className="thumb" alt={produto.imageSrc} />
+                                            <img src={produto.imageSrc != "http://adilsonxavier-001-site1.itempurl.com/images/" ? produto.imageSrc : semfoto} className="thumb" alt={produto.imageSrc} />
                                         </td>
                                          
                                         <td className={`${styles.priority1} ${styles.centered}`}>
