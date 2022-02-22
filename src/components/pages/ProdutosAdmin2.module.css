@@ -108,17 +108,13 @@ h1 {
    
 }
 
-.prioryty0 {
-    min-width:15%;
+
+
+.priority2 {
+    text-align:center;
 }
 
-.prioryty2 {
-    display: none;
-}
 
-.prioryty3 {
-    display:none;
-}
 
 @media screen and (min-width: 500px) and (max-width: 858px) {
     .priority3 {
