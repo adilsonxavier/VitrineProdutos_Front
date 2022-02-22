@@ -50,19 +50,19 @@ export default function ProdutoForm() {
     }
 
     const refeshProduto = (id) => {
-        console.log("api getbyid 1310 " + api.defaults.headers.Authorization);
+       // console.log("api getbyid 1310 " + api.defaults.headers.Authorization);
         api.get(`/produtos/${id}`)
         //produtoAPI().fetchById(id)
             .then(resp => {
                 setValues(resp.data);
-                console.log("dados: " + resp.data);
+              //  console.log("dados: " + resp.data);
             })
             .catch(erro => console.log("refresh Produtos erro:"+ erro ));
 
     }
     const handleInputChange = e => {
         //const [name, value] = e.target;
-        console.log(e.target.name)
+      //  console.log(e.target.name)
 
         setValues(
             {
@@ -71,7 +71,7 @@ export default function ProdutoForm() {
             }
 
         );
-        console.log(values);
+       // console.log(values);
 
     }
 
@@ -86,11 +86,11 @@ export default function ProdutoForm() {
             formData.append("produtoValor", values.produtoValor.toString().replace(".", ",")); // precisa ir com vírgula senão chega como int na api
             formData.append("produtoValorAntigo", values.produtoValorAntigo.toString().replace(".", ","));
 
-            console.log 
+          //  console.log 
 
             addOrEdit(formData, resetForm);
 
-            console.log("ok 54")
+           // console.log("ok 54")
         }
         else {
             console.log("tem erro 57")
@@ -99,7 +99,7 @@ export default function ProdutoForm() {
 
     const resetForm = () => {
         setValues(initialFieldValues);
-        console.log("reset form - success")
+       // console.log("reset form - success")
         setErrors({});
     }
     const validate = () => {
@@ -108,7 +108,7 @@ export default function ProdutoForm() {
         let produtoValor = values.produtoValor.toString().replace(",", ".");
         temp.produtoValor = produtoValor == "" || isNaN(produtoValor) || parseFloat(produtoValor) <= 0 ? false : true;
         setErrors(temp);
-        console.log(temp);
+       // console.log(temp);
         return Object.values(temp).every(x => x == true);
 
 
@@ -145,7 +145,7 @@ export default function ProdutoForm() {
                     api.put(`/categorias/PutCategoriasProduto/${data.produtoId}`, categorias)
                     //categoriasAPI().update(data.produtoId, categorias)
                         .then(resp => {
-                            console.log("1002 1404")
+                            //console.log("1002 1404")
                              alert("Produto inserido com sucesso ");
                             history.push(`/produtoForm/${data.produtoId}`);
                         })
@@ -166,7 +166,7 @@ export default function ProdutoForm() {
                     api.put(`/categorias/PutCategoriasProduto/${id}`,categorias)
                    // categoriasAPI().update(id, categorias)
                         .then(resp => {
-                            console.log("1002 1400")
+                            //console.log("1002 1400")
                                alert("Produto " + formData.get("produtoId") + " atualizado");
                                  history.push("/produtosAdmin");
                         })
@@ -193,7 +193,7 @@ export default function ProdutoForm() {
 
 
     function refreshCategoriasList(id) {
-        console.log("refredh cat id " + id)
+        //console.log("refredh cat id " + id)
         api.get(`/categorias/GetCategoriasProduto/${id}`)
       //  categoriasAPI().fetchAllByProduto(id)
             .then(resp => setCategorias(resp.data))
