@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { useHistory, Link } from 'react-router-dom';
 import styles from "./Navbar.module.css";
-import logo from "../../img/costs_logo.png";
+import logo from "../../img/logosite.png";
 import { Context } from "../Contexts/Context1";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -38,7 +38,7 @@ export default function Navbar(props) {
                 </li>
 
                 <li >
-                    <Link onClick={checkBoxChanged} to="/home2" >Home2</Link>  {/* o Link é renderizado como uma tag <a>*/}
+                    <Link onClick={checkBoxChanged} to="/NossosProdutos" >Nossos Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
 
                 </li>
 

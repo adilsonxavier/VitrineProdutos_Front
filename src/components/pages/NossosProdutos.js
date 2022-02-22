@@ -4,9 +4,9 @@ import api from "../../api"
 import Pagination from "../layout/Pagination";
 import Loading from "../layout/Loading";
 import ProdutoCard from "./ProdutoCard";
-import styles from "./Home2.module.css";
+import styles from "./NossosProdutos.module.css";
 
-export default function Home2() {
+export default function NossosProdutos() {
     //////////// Paginação ///////////
     const PAGESIZE = 6;
     // const TOTALITENS= 120;

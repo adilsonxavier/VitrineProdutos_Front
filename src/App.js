@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 import Home from "./components/pages/Home";
-import Home2 from "./components/pages/Home2";
+import NossosProdutos from "./components/pages/NossosProdutos";
 import Company from "./components/pages/Company";
 import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
@@ -28,8 +28,8 @@ export default function App() {
                             <Home />
                         </Route>
 
-                        <Route exact path="/home2">
-                            <Home2 />
+                        <Route exact path="/nossosprodutos">
+                            <NossosProdutos />
                         </Route>
 
                         <Route path="/company">

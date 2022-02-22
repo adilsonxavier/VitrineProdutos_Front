@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { useHistory, Link } from 'react-router-dom';
 import styles from "./Navbar.module.css";
-import logo from "../../img/costs_logo.png";
+import logo from "../../img/logoadmin.png";
 import { Context } from "../Contexts/Context1";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -29,7 +29,7 @@ export default function Navbar(props) {
 
             <input type="checkbox" onChange={(e) => checkBoxChanged(e)} className={ styles.check} id="check"/>
 
-            <Link to="/" > Admin</Link>
+            <Link to="/ProdutosAdmin" > <img src={logo} /></Link>
 
             <ul className={`${styles.list} ${ checked==true ? styles.newstyle : styles.oldstyle}`} >
                 {/*<li >*/}
@@ -38,7 +38,7 @@ export default function Navbar(props) {
                 {/*</li>*/}
 
                 <li >
-                    <Link onClick={checkBoxChanged} to="/home2" >Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
+                    <Link onClick={checkBoxChanged} to="/ProdutosAdmin2" >Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
 
                 </li>
 
