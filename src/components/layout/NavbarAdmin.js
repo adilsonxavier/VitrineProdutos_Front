@@ -38,7 +38,7 @@ export default function Navbar(props) {
                 {/*</li>*/}
 
                 <li >
-                    <Link onClick={checkBoxChanged} to="/ProdutosAdmin2" >Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
+                    <Link onClick={checkBoxChanged} to="/ProdutosAdmin" >Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
 
                 </li>
 

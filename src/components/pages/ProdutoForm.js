@@ -85,6 +85,8 @@ export default function ProdutoForm() {
             formData.append("produtoValor", values.produtoValor.toString().replace(".", ",")); // precisa ir com vírgula senão chega como int na api
             formData.append("produtoValorAntigo", values.produtoValorAntigo.toString().replace(".", ","));
 
+            console.log 
+
             addOrEdit(formData, resetForm);
 
             console.log("ok 54")
@@ -187,16 +189,7 @@ export default function ProdutoForm() {
     //#region categorias
     /////// checklist categorias inicio /////////cccccccccccccccccccccccccccccccccccccc
     const [categorias, setCategorias] = React.useState([]);
-    const categoriasAPI = (url = "http://localhost:55366/api/categorias") => {
-        return {
-            fetchAll: () => axios.get(url),
-            fetchAllByProduto: (id) => axios.get(url + "/GetCategoriasProduto/" + id),
-            create: (newRecord) => axios.post(url, newRecord),
-            update: (id, updatedRecord) => axios.put(url + "/PutCategoriasProduto/" + id, updatedRecord),
-            delete: (id) => axios.delete(url + "/" + id),
 
-        }
-    }
 
     function refreshCategoriasList(id) {
         console.log("refredh cat id " + id)
