@@ -37,7 +37,7 @@ export default function Fotos() {
         e.preventDefault() 
 
         e.stopPropagation();
-        if (confirm("tem certeza ?")) {
+        if (confirm("Tem certeza que quer deletar a imagem?")) {
             api.delete(`/fotos/${id}`)
                 .then(resp => refreshFotosList())
                 .catch(erro => console.log(erro));

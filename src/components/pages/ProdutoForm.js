@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import styles from "./ProdutoForm.module.css";
 import { Link } from "react-router-dom";
 import api from "../../api"
+import { FaCamera} from "react-icons/fa"
 
 export default function ProdutoForm() {
 
@@ -318,7 +319,12 @@ export default function ProdutoForm() {
                         </div>
                         <div className={styles.divlinks}>
                             {id != 0 &&
-                                <Link to={`/Fotos/${id}`} >fotos </Link>
+                                <Link to={`/Fotos/${id}`} >
+                                <div className={styles.divfotos}>
+                                    <span className={styles.icocamera}><FaCamera /></span>&nbsp;
+                                    <span>Fotos</span>
+                                </div>
+                            </Link>
                             }
                             &nbsp;
                             <Link to="/produtosAdmin" >Voltar</Link>
