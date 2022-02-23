@@ -87,6 +87,7 @@ h1 {
 
     .tableprod button.icons {
        color:red;
+       cursor:pointer;
     }
 
   /**** Table columns priority ***/
