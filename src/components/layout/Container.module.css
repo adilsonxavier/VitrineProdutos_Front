@@ -9,15 +9,3 @@
     /*flex-wrap: wrap;*/ /* quando os elementos filhos ultrapassarem 1200px vão pra baixo em uma nova linha;*/
 }
 
-
-/*.min_height{
-    min-height:75%;
-    color:green;
-}
-.start {
-    justify-content:flex-start ;
-}
-.column {
-    flex-direction: column;
-    justify-content: flex-start;
-}*/

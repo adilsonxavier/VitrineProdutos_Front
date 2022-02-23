@@ -25,17 +25,12 @@ export default function Navbar(props) {
 
     return (
         <nav className={styles.navbaradmin}>
-            {/*            <Container>*/}
 
             <input type="checkbox" onChange={(e) => checkBoxChanged(e)} className={ styles.check} id="check"/>
 
             <Link to="/ProdutosAdmin" > <img src={logo} /></Link>
 
             <ul className={`${styles.list} ${ checked==true ? styles.newstyle : styles.oldstyle}`} >
-                {/*<li >*/}
-                {/*    <Link onClick={checkBoxChanged} to="/" >Home</Link>  */}{/* o Link é renderizado como uma tag <a>*/}
-                   
-                {/*</li>*/}
 
                 <li >
                     <Link onClick={checkBoxChanged} to="/ProdutosAdmin" >Produtos</Link>  {/* o Link é renderizado como uma tag <a>*/}
@@ -47,10 +42,7 @@ export default function Navbar(props) {
                 </li>
 
                 <li>
-                    {logged
-                        ? <a onClick={logout } >Logout</a>
-                        : <Link onClick={checkBoxChanged} to="/login" >Logout</Link>
-                    }
+                    <Link onClick={() => { logout(); checkBoxChanged(); }} to="/login" >Logout</Link>
 
                 </li>
 

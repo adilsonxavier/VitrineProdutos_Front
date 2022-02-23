@@ -27,42 +27,24 @@ export default function ProdutoForm() {
 
     React.useEffect(() => {
 
-        //refreshProdutoList();
         if (id != "0") {
             refeshProduto(id);
         }
         refreshCategoriasList(id);
-        //if (recordForEdit != null) {
-        //    setValues(recordForEdit)
-        //}
     }, []
     );
 
-    const produtoAPI = (url = "http://localhost:55366/api/produtos") => {
-        return {
-            fetchAll: () => axios.get(url),
-            fetchByName: (wordkey) => axios.get(url + "/GetProdutoByName/" + wordkey),
-            //fetchById: (id) => axios.get(url + "/" + id),
-            create: (newRecord) => axios.post(url, newRecord),
-            update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
-            delete: (id) => axios.delete(url + "/" + id)
-        }
-    }
+    
 
     const refeshProduto = (id) => {
-       // console.log("api getbyid 1310 " + api.defaults.headers.Authorization);
         api.get(`/produtos/${id}`)
-        //produtoAPI().fetchById(id)
             .then(resp => {
                 setValues(resp.data);
-              //  console.log("dados: " + resp.data);
             })
             .catch(erro => console.log("refresh Produtos erro:"+ erro ));
 
     }
     const handleInputChange = e => {
-        //const [name, value] = e.target;
-      //  console.log(e.target.name)
 
         setValues(
             {
@@ -71,8 +53,6 @@ export default function ProdutoForm() {
             }
 
         );
-       // console.log(values);
-
     }
 
     const handleFormSubmit = e => {
@@ -85,21 +65,16 @@ export default function ProdutoForm() {
             formData.append("produtoDescricao", values.produtoDescricao);
             formData.append("produtoValor", values.produtoValor.toString().replace(".", ",")); // precisa ir com vírgula senão chega como int na api
             formData.append("produtoValorAntigo", values.produtoValorAntigo.toString().replace(".", ","));
-
-          //  console.log 
-
             addOrEdit(formData, resetForm);
 
-           // console.log("ok 54")
         }
         else {
-            console.log("tem erro 57")
+            console.log("tem erro - linha 72 ")
         }
     }
 
     const resetForm = () => {
         setValues(initialFieldValues);
-       // console.log("reset form - success")
         setErrors({});
     }
     const validate = () => {
@@ -108,7 +83,6 @@ export default function ProdutoForm() {
         let produtoValor = values.produtoValor.toString().replace(",", ".");
         temp.produtoValor = produtoValor == "" || isNaN(produtoValor) || parseFloat(produtoValor) <= 0 ? false : true;
         setErrors(temp);
-       // console.log(temp);
         return Object.values(temp).every(x => x == true);
 
 
@@ -128,24 +102,13 @@ export default function ProdutoForm() {
 
     const addOrEdit = (formData, onSuccess) => {
        
-       // create: (newRecord) => axios.post(url, newRecord),
         if (formData.get("produtoId") == "0") {
 
             api.post("/produtos/", formData)
-           // produtoAPI().create(formData)
-                .then(response => { return response.data
-                   // resp.json()
-                  //  console.log("150" + response.json());
-                    //console.log(resp); onSuccess(); /* refreshProdutoList()*/;
-                    //alert("Produto inserido com sucesso ");
-                    //history.push("/produtosAdmin");
-                }
-                )
+                .then(response => { return response.data } )
                 .then(data => {
                     api.put(`/categorias/PutCategoriasProduto/${data.produtoId}`, categorias)
-                    //categoriasAPI().update(data.produtoId, categorias)
                         .then(resp => {
-                            //console.log("1002 1404")
                              alert("Produto inserido com sucesso ");
                             history.push(`/produtoForm/${data.produtoId}`);
                         })
@@ -155,18 +118,10 @@ export default function ProdutoForm() {
                 .catch((err) => { "erro el 19 " + console.log(err) });
         }
         else {
-            //update: (id, updatedRecord) => axios.put(url + "/" + id, updatedRecord),
             api.put(`/produtos/${formData.get("produtoId")}`, formData)
-           // produtoAPI().update(formData.get("produtoId"), formData)
                 .then(resp => {
-                    //console.log("erro foi " + resp); onSuccess(); /*refreshProdutoList()*/;
-                    //alert("Produto " + formData.get("produtoId") + " atualizado");
-                    //history.push("/produtosAdmin");
-                    //update: (id, updatedRecord) => axios.put(url + "/PutCategoriasProduto/" + id, updatedRecord),
                     api.put(`/categorias/PutCategoriasProduto/${id}`,categorias)
-                   // categoriasAPI().update(id, categorias)
                         .then(resp => {
-                            //console.log("1002 1400")
                                alert("Produto " + formData.get("produtoId") + " atualizado");
                                  history.push("/produtosAdmin");
                         })
@@ -175,12 +130,6 @@ export default function ProdutoForm() {
                  .catch((err) => { "erro el 60 " + console.log(err) });
         }
     }
-
-    //////////////
-    //categoriasAPI().update(id, categorias)
-    //    .then(data => console.log(data))
-    //    .catch(erro => console.log(erro));
-    /////////////
 
 
    ///////comp ProdutoForm final//////////****************************************
@@ -191,15 +140,11 @@ export default function ProdutoForm() {
     /////// checklist categorias inicio /////////cccccccccccccccccccccccccccccccccccccc
     const [categorias, setCategorias] = React.useState([]);
 
-
     function refreshCategoriasList(id) {
-        //console.log("refredh cat id " + id)
         api.get(`/categorias/GetCategoriasProduto/${id}`)
-      //  categoriasAPI().fetchAllByProduto(id)
             .then(resp => setCategorias(resp.data))
-            .catch(err => console.log("o erro lina 26 foi : " + err));
-       // console.log("213 : "+ JSON.stringify(categorias));
-        // setValues({ ...values, categorias: categorias });
+            .catch(err => console.log("o erro lina 146 foi : " + err));
+
     }
 
 
@@ -207,17 +152,12 @@ export default function ProdutoForm() {
 
         const updatedCheckedState = categorias.map((categoria, position) => {
             let updateElement = {
-                //categoriaId: categoria.categoriaId,
-                //categoriaName : categoria.categoriaName,
                 ...categoria,
                 checked: position == index ? !categoria.checked : categoria.checked
             }
             return updateElement;
         });
         setCategorias(updatedCheckedState);
-       // console.log("227 " + JSON.stringify(categorias));
-        //setValues({ ...values, categorias: categorias });
-        //console.log("227 " + JSON.stringify(categorias));
     }
 
      /////// checklist categorias fim /////////cccccccccccccccccccccccccccccccccccccc

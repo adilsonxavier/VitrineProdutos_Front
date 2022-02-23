@@ -30,15 +30,6 @@ export default function ContextProvider(props) {
         }
     }
 
-
-    //React.useEffect(() => {
-    //    // console.log("AC.useeffect executado");
-    //    const token = localStorage.getItem("token");
-    //    if (token) {
-    //        api.defaults.headers.Authorization = token;
-    //    }
-    //}, []);
-
     return (
         <Context.Provider value={{ authorized, setAuthorized, token, setToken, checkExpiredToken, logged, setLogged}}>
             {props.children}

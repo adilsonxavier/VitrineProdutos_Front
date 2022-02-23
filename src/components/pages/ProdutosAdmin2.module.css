@@ -14,14 +14,8 @@ h1 {
 }
 
 .busca {
-    /*  width: 35rem;
-    display: flex;
-    justify-content:left;*/
-   /* height: 2.5rem;*/
     margin-top: 1rem;
     width: 100%;
-   /* display: grid;
-    grid-template-columns: 1fr 1fr;*/
    display:flex;
    flex-wrap:wrap;
 }
@@ -69,14 +63,6 @@ h1 {
         border: 1px solid #ddd;
         padding: 8px;
     }
-/*
-    .tableprod tr:nth-child(odd) td:nth-child(odd),
-    .tableprod tr:nth-child(even) td:nth-child(even) {
-        background-color: #f2f2f2;
-    }*/
-/*    .tableprod tr:nth-child(even), .tableprod tr:nth-child(odd) {
-        background-color: #f2f2f2;
-    }*/
 
     .tableprod tr:hover {
         background-color: #ddd;
@@ -102,13 +88,10 @@ h1 {
     .tableprod button.icons {
        color:red;
     }
-        /*********************/
-        /**** Table columns priority ***/
-        .priority1{
-   
+
+  /**** Table columns priority ***/
+.priority1 {
 }
-
-
 
 .priority2 {
     text-align:center;
@@ -143,15 +126,4 @@ h1 {
     display: block;
     margin-top: .4rem;
 }
-
-/*.containerProdutos
-{
-     margin-top: 1rem;*/
-   /* background:green;*/
-    /*display:flex;
-    justify-content:space-between;
-    max-width:1000px;
-    flex-wrap:wrap;
-
-}*/
 

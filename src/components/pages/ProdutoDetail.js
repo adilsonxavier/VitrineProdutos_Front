@@ -14,26 +14,21 @@ export default function ProdutoDetail(props) {
     const [categorias, setCategorias] = React.useState([]);
 
     React.useEffect(() => {
-        console.log("linha 17 0304");
         refeshProduto(id);
         refreshCategoriasList(id);
     }, []
     );
 
     const refeshProduto = (id) => {
-       /* console.log("api getbyid 1310 " + api.defaults.headers.Authorization);*/
         api.get(`/produtos/${id}`)
-            //produtoAPI().fetchById(id)
             .then(resp => {
                 setValues(resp.data);
-               /* console.log("dados: " + resp.data);*/
-            })
+                 })
             .catch(erro => console.log("refresh Produtos erro:" + erro));
 
     }
 
     function refreshCategoriasList(id) {
-      /*  console.log("refredh cat id " + id)*/
         api.get(`/categorias/GetCategoriasProduto/${id}`)
             .then(resp => setCategorias(resp.data))
             .catch(err => console.log("o erro lina 26 foi : " + err));
@@ -60,8 +55,7 @@ export default function ProdutoDetail(props) {
                     <div >
                         {
                             categorias.length > 0 &&
-                            /*<form onSubmit={handleFormSubmit}>*/
-                            (
+                             (
 
                                 <ul className={styles.listacategorias}>
                                     {
@@ -90,9 +84,3 @@ export default function ProdutoDetail(props) {
         );
 }
 
-            //<tr key={produto.produtoId}>
-            //    <td>{produto.produtoId}</td>
-            //    <td>{produto.produtoNome}</td>
-            //    <td>{produto.produtoDescricao}</td>
-            //    <td>{produto.produtoValor}</td>
-            //    <td>

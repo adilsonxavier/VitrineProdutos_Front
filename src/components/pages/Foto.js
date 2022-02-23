@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import logo from "../../img/costs_logo.png";
 import semfoto from "../../img/semfoto.png";
 import api from "../../api"
 import styles from "./Foto.module.css";
@@ -37,7 +36,6 @@ export default function Foto(props) {
                 );
             }
             reader.readAsDataURL(imageFile);
-            // console.log(imageFile);
         }
         else {
             alert("dfas");
@@ -93,7 +91,6 @@ export default function Foto(props) {
     const resetForm = () => {
         setValues(initialFieldValues);
         document.getElementById("image-uploader").value = null;
-        console.log("reset form - success")
         setErrors({});
     }
     const resetImage = (e) => {
@@ -118,27 +115,10 @@ export default function Foto(props) {
             formData.append("imageFile", values.imageFile);
 
             addOrEdit(formData, resetForm);
-
-
-            console.log("ok 97")
         }
         else {
-            console.log("n ok");
             alert("Selecione uma imagem.");
         }
-    }
-
-    const handleInputChange = e => {
-        // const [name, value] = e.target;
-        setValues(
-            {
-                ...values,
-                [e.target.name]: e.target.value
-            }
-
-        );
-        // console.log(values);
-
     }
 
     React.useEffect(() => {
@@ -148,10 +128,7 @@ export default function Foto(props) {
 
     }, [recordForEdit]);
 
-
-    //  const applyErrorClass = (field) => ( (field in errors && errors[field] == false) ? " invalid-field" : "");
     const applyErrorClass = (field) => { return (field in errors && errors[field] == false) ? " invalid-field" : "" };
-    // (field in errors ) retorna true se todos se a propriedade com o nome field existir no objeto errors
 
     const estiloFoto = {
         width: "200px",
@@ -182,14 +159,6 @@ export default function Foto(props) {
                         />
                         <button className={styles.labelbtn} onClick={resetImage} >Limpar Imagem</button>
                     </div>
-                    {/*<div className="card-body">*/}
-                    {/*    <input type="text" name="description"*/}
-                    {/*        value={values.description}*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        placeholder="descriçao"*/}
-                            
-                    {/*    />*/}
-                    {/*</div>*/}
                     <div className={styles.divbtnenviar} >
                         <button className={styles.btnenviar} type="submit">Enviar</button>
                     </div>

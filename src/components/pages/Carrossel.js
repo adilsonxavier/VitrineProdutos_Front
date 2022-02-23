@@ -16,7 +16,6 @@ export default function Carrossel(props) {
 
     function refreshFotosList() {
         api.get(`/fotos/GetFotosProduto/${props.produtoId}`, props.produtoId)
-            //fotosAPI().fetchAllByProduto(id)
             .then(resp => { setFotos(resp.data); console.log(resp.data) })
             .catch(err => console.log("o erro lina 26 foi : " + err));
 
@@ -48,9 +47,6 @@ export default function Carrossel(props) {
                                     <div className={styles.image}>
                                         <img src={foto.imageSrc} alt="shoe" />
                                     </div>
-                                    {/*<div className={styles.info}>*/}
-                                    {/*    <span className={styles.name}>{foto.description}</span>*/}
-                                    {/*</div>*/}
                                 </div>) 
                         })}
 

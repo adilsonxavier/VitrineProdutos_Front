@@ -44,7 +44,14 @@ export default function Pagination({ pageSize, totalItens, skip, setSkip, curren
                     /* Como eu preciso usar no map pra criar a lista , eu uso só o index do map e o primeiro parâmeto eu uso
                         uma variável inexistente só pra obedecer os parâmetros do map() (usei a var _ mas poderia ser qualquer nome )
                       */
-                    .map((pageNumber) => <li key={pageNumber }>                        <button                            onClick={() => { setCurrentPage2(pageNumber); setShowLoading(true) }}                            className={pageNumber === currentPage2 ? styles.pagination_container__item__active : ""}                        >{pageNumber} </button>                    </li>)                  /* poderia ser um map só . Foi 2 só pra melhor a le*/
+                    .map((pageNumber) => <li key={pageNumber }>
+                        <button
+                            onClick={() => { setCurrentPage2(pageNumber); setShowLoading(true) }}
+                            className={pageNumber === currentPage2 ? styles.pagination_container__item__active : ""}
+                        >{pageNumber} </button>
+
+                    </li>)
+                  /* poderia ser um map só . Foi 2 só pra melhor a le*/
                     //.filter((x) => x!= undefined)
 
                    

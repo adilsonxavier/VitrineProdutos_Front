@@ -36,7 +36,6 @@
 .containerProdutos
 {
      margin-top: 1rem;
-   /* background:green;*/
     display:flex;
     justify-content:space-between;
     max-width:1000px;

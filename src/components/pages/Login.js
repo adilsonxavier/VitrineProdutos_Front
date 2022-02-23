@@ -1,9 +1,8 @@
 ﻿import React from "react";
-import axios from "axios";
 import api from "../../api";
 import styles from "./Login.module.css";
 
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Context } from "../Contexts/Context1";
 
@@ -15,28 +14,17 @@ export default function Login() {
     const [errors, setErrors] = React.useState({});
 
    async function handleAutenticate (formData) {
-        console.log("auth 0755");
-       // const user = { name: "maysa", password: "123456" };
        const user = formData; 
-      // const { data } = await userAPI().authenticate(user);
-      // api.defaults.baseURL = 'https://api.example.com';
        const { data } = await api.post("/user/login", user)
-
-      // const { data: { token } } = await api.post("/authenticate");
 
        const meutoken = JSON.stringify(data.token);
        setToken(meutoken);
        setAuthorized(true); 
-     //  localStorage.setItem("token", meutoken);
        
        api.defaults.headers.Authorization = `Bearer ${data.token}`
        localStorage.setItem("token", `Bearer ${data.token}`);
-       /* console.log("handle authedafd0502s 36" + data.token + "json"+ JSON.stringify(data.token));*/
-       console.log("api def 12300 " + api.defaults.headers.Authorization)
        setLogged(true);
        setAuthorized(true);
-       console.log("logged tela login " + logged);
-       console.log("authorizedd tela login " + authorized)
        history.push("/ProdutosAdmin");
 
     }
@@ -54,7 +42,7 @@ export default function Login() {
             handleAutenticate();
         }
         else {
-            console.log("tem erro 57")
+            console.log("tem erro 45")
         }
     }
     const handleInputChange = e => {
@@ -86,10 +74,7 @@ export default function Login() {
     }
 
     async function handleAutenticate(formData) {
-        // rever tratamento de erro
 
-        console.log("aut 1027000");
-        const resposta = {};
         try {
             const { data } = await api.post("/user/login", values);
             const meutoken = JSON.stringify(data.token);

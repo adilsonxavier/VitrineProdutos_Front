@@ -8,8 +8,6 @@ import { Context } from "../Contexts/Context1";
 export default function Header() {
 
     const { logged } = React.useContext(Context);
-    console.log("comp header " + logged);
-
     return (
 
         <header className={logged == true ? styles.myheaderadmin : styles.myheader }>

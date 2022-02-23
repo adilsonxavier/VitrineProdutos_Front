@@ -14,7 +14,6 @@ export default function Fotos() {
     const [recordForEdit, setRecordForEdit] = React.useState(null);
 
         React.useEffect(() => {
-        // console.log("AC.useeffect executado");
         const token = localStorage.getItem("token");
         if (token) {
             api.defaults.headers.Authorization = token;

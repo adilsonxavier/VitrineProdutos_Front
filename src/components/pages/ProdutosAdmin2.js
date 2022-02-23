@@ -11,21 +11,20 @@ import { FaTrash,FaPencilAlt} from "react-icons/fa"
 
 
 export default function ProdutosAdmin2() {
-    //////////// Paginação ///////////
-    const PAGESIZE = 6;
-    // const TOTALITENS= 120;
-    //const SKIP = 24;
-    //const [skip, setSkip] = React.useState(0);
+
+
+    const PAGESIZE = 6; // Usado na paginação
+
     const [currentPage2, setCurrentPage2] = React.useState(1);
     const [totalItens, setTotalItens] = React.useState(0);
 
-     //////////// Paginação fim ///////////
-
     const history = useHistory();
 
-    const { authorized, setAuthorized, baseUrl, checkExpiredToken,logged} = React.useContext(Context);
+    const { setLogged } = React.useContext(Context);
 
-  /*  const [token, setToken] = React.useState("");*/
+    const {  checkExpiredToken} = React.useContext(Context);
+
+
 
     const [busca, setBusca] = React.useState("");
     const [values, setValues] = React.useState("");
@@ -37,7 +36,8 @@ export default function ProdutosAdmin2() {
     React.useEffect(() => {
 
        if (checkExpiredToken()) {
-            alert("token expirado! \n Faça novo login.");
+           alert("token expirado! \n Faça novo login.");
+           setLogged(false);
             history.push("/login");
         }
        const token = localStorage.getItem("token");
@@ -47,15 +47,12 @@ export default function ProdutosAdmin2() {
 
         refreshProdutoList();
 
-
-    
-
     }, [currentPage2,busca]
     );
 
 
     function refreshProdutoList() {
-        console.log("api def prodadm 1202 " + api.defaults.headers.Authorization);
+
         api.get(`/produtos/GetProdutosPaginacao/${currentPage2}/${PAGESIZE}/${busca}`)
             .then(resp => {
                 setProdutoList(resp.data); setTotalItens(resp.data[0] != undefined ? resp.data[0].qtdTotalItens : 0);
@@ -91,7 +88,7 @@ export default function ProdutosAdmin2() {
 
     const handleBusca = () => {
         setBusca(values.busca != undefined ? values.busca : "");
-        console.log("78 busca " + busca);
+
     }
 
     const handleInputChange = e => {
