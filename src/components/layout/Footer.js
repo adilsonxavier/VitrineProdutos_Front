@@ -9,9 +9,13 @@ export default function Footer() {
             <ul className={ styles.list }>
                 <li><FaFacebook /> </li>
                 <li><FaInstagram /> </li>
-                <li><FaLinkedin /> </li>
+                <li><a href="https://www.linkedin.com/in/adilsonxavier/"><FaLinkedin /></a> </li>
             </ul>
-            <p className={ styles.copyright }><span>Adilson Xavier de Souza</span> &nbsp; &copy;2022</p>
+            <p className={styles.copyright}><span>Adilson Xavier de Souza
+            </span> &nbsp; &copy;2022</p>
+            <p className={styles.copyright}><span>Linkedin:&nbsp;
+                <a href="https://www.linkedin.com/in/adilsonxavier/">https://www.linkedin.com/in/adilsonxavier/</a>
+            </span></p>
         </footer>
 
 
