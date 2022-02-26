@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 function Home() {
     return (
         <section className ={styles.home_container }>
-            <h1>Bem vindo ao <span>Costs  151515151</span></h1>
-            <p> comece agora</p>
-            <a href="/">Criar Projeto</a>
-            <img src={savings} alt="aa" /><br />
-            <Link to="/admin/home">Adnin</Link>
+            <h1>Bem vindo ao site Vitrine de Produtos</h1>
+            <p style={{ marginTop: "1.5em", marginBottom: "0" }}>Login da área adminstrativa:</p>
+            <p style={{ marginTop: "1.5em", marginBottom: "0" }}><strong>usuário: </strong> maysa</p>
+            <p style={{ marginTop: "1em", marginBottom: "0" }}><strong>senha: </strong>henrique123</p>
+
             
        </section>
 

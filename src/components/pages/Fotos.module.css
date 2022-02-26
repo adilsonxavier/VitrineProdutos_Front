@@ -1,4 +1,9 @@
-﻿.contcadastrofotos {
+﻿.contpagina {
+    width: 100%;
+    font-size: 1em;
+    margin-left: .5rem;
+}
+.contcadastrofotos {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
