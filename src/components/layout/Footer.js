@@ -16,6 +16,10 @@ export default function Footer() {
             <p className={styles.copyright}><span>Linkedin:&nbsp;
                 <a href="https://www.linkedin.com/in/adilsonxavier/">https://www.linkedin.com/in/adilsonxavier/</a>
             </span></p>
+
+            <p className={styles.copyright}><span>Github:&nbsp;
+                <a href="https://github.com/adilsonxavier">https://github.com/adilsonxavier</a>
+            </span></p>
         </footer>
 
 
