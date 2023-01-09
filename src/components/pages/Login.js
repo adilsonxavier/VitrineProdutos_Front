@@ -121,7 +121,7 @@ export default function Login() {
                         />
                     </div>
                     <div>
-                        <label>Senha</label>
+                        <label>Senha::</label>
                         <input type="password" name="password"
                             placeholder="Senha"
                             onChange={handleInputChange}

@@ -2,3 +2,16 @@
 npm install json-server
 em stcripts do package.json: 
     "backend": "json-server --watch db.json --port 5000"
+
+    Lembretes de revisão 04/09/2022
+    =================================
+  Atualizar o arquivo public\index.bundle.js após alterações:
+  npx webpack --mode development
+
+  Rodar a aplicação em http://localhost:3057 
+  especificada em  devServer: {port: 3057,} do arquivo webpack.config.js  :
+  npx webpack serve --mode development
+
+  
+
+
